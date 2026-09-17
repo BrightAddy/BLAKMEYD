@@ -1,0 +1,181 @@
+/* ─────────────────────────────────────────────────────
+   BLAK MEYD — Global Styles
+   @imports MUST be first — before any other rules
+   Brand: Ivory · Ink · Emerald · Gold
+   ───────────────────────────────────────────────────── */
+
+/* Tailwind v4 */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Fonts are loaded via next/font (Fraunces) and <link> tag (General Sans) in layout.tsx */
+
+/* ─── Tailwind custom variant ─── */
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────────────────
+   BRAND DESIGN TOKENS
+   ───────────────────────────────────────────────────── */
+@theme inline {
+  /* Brand palette */
+  --color-ivory:          #FBF9F4;
+  --color-ink:            #15150F;
+  --color-emerald:        #0E3B2E;
+  --color-gold:           #B98A2E;
+  --color-emerald-tint:   #E4ECE7;
+
+  /* shadcn semantic tokens — mapped to brand */
+  --color-background:     var(--background);
+  --color-foreground:     var(--foreground);
+  --color-primary:        var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:      var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:          var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent:         var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive:    var(--destructive);
+  --color-border:         var(--border);
+  --color-input:          var(--input);
+  --color-ring:           var(--ring);
+  --color-card:           var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover:        var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Fonts */
+  --font-fraunces:        var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-general-sans:    'General Sans', system-ui, sans-serif;
+  --font-sans:            'General Sans', system-ui, sans-serif;
+  --font-heading:         var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-mono:            var(--font-geist-mono);
+
+  /* Border radius — editorial/sharp */
+  --radius-sm:            2px;
+  --radius-md:            4px;
+  --radius-lg:            8px;
+  --radius-xl:            12px;
+  --radius-2xl:           16px;
+  --radius-full:          9999px;
+
+  /* Shadows — Ink-toned */
+  --shadow-sm:            0 1px 3px rgba(21,21,15,0.06);
+  --shadow-md:            0 4px 12px rgba(21,21,15,0.10);
+  --shadow-lg:            0 12px 32px rgba(21,21,15,0.12);
+  --shadow-xl:            0 24px 48px rgba(21,21,15,0.16);
+  --shadow-gold:          0 4px 24px rgba(185,138,46,0.30);
+  --shadow-emerald:       0 4px 24px rgba(14,59,46,0.25);
+}
+
+/* ─────────────────────────────────────────────────────
+   shadcn/ui SEMANTIC COLOUR MAPPINGS (brand overrides)
+   ───────────────────────────────────────────────────── */
+:root {
+  --background:           #FBF9F4;
+  --foreground:           #15150F;
+  --card:                 #FBF9F4;
+  --card-foreground:      #15150F;
+  --popover:              #FBF9F4;
+  --popover-foreground:   #15150F;
+  --primary:              #0E3B2E;
+  --primary-foreground:   #FBF9F4;
+  --secondary:            #E4ECE7;
+  --secondary-foreground: #15150F;
+  --muted:                #E4ECE7;
+  --muted-foreground:     #5C6B65;
+  --accent:               #B98A2E;
+  --accent-foreground:    #FBF9F4;
+  --destructive:          #C0392B;
+  --border:               #D8D4CC;
+  --input:                #E4ECE7;
+  --ring:                 #B98A2E;
+  --radius:               0.25rem;
+}
+
+/* ─────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+
+  body {
+    background-color: #FBF9F4;
+    color: #15150F;
+    font-family: 'General Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: #B98A2E;
+    color: #FBF9F4;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #FBF9F4; }
+  ::-webkit-scrollbar-thumb { background: #0E3B2E; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #B98A2E; }
+}
+
+/* ─────────────────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────────────────── */
+@layer utilities {
+  .font-fraunces     { font-family: 'Fraunces', Georgia, serif; }
+  .font-general-sans { font-family: 'General Sans', system-ui, sans-serif; }
+
+  /* Gold underline on hover */
+  .gold-underline { position: relative; }
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: #B98A2E;
+    transition: width 300ms ease;
+  }
+  .gold-underline:hover::after { width: 100%; }
+
+  /* Subtle noise grain overlay */
+  .grain-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

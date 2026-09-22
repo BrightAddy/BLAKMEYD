@@ -184,8 +184,24 @@ export default function AtelierHero() {
           </div>
         </div>
 
-        {/* ── BOTTOM ROW: EDITORIAL QUOTE (CLEAN RIGHT ALIGNED, NUMBERS REMOVED) ── */}
-        <div className="w-full flex items-end justify-end pt-8 border-t border-white/10 sm:border-t-0">
+        {/* ── BOTTOM ROW: SCROLL CUE & EDITORIAL QUOTE ── */}
+        <div className="w-full flex items-end justify-between pt-6 border-t border-white/10 sm:border-t-0">
+          {/* Animated Scroll to Explore Cue */}
+          <a
+            href="#introduction"
+            className="group hidden sm:inline-flex items-center gap-3 text-[10px] tracking-[0.24em] font-mono text-white/60 hover:text-[#B98A2E] transition-colors"
+            aria-label="Scroll to Atelier Introduction"
+          >
+            <span className="relative flex h-7 w-[1.5px] bg-white/20 overflow-hidden rounded-full">
+              <motion.span
+                animate={{ y: ["-100%", "100%"] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-x-0 h-1/2 bg-[#B98A2E]"
+              />
+            </span>
+            <span className="uppercase">Explore Atelier &darr;</span>
+          </a>
+
           {/* Bottom Right Italic Editorial Caption */}
           <div className="max-w-[280px] sm:max-w-md text-right pl-4">
             <AnimatePresence mode="wait">
@@ -203,6 +219,9 @@ export default function AtelierHero() {
           </div>
         </div>
       </div>
+
+      {/* ── SEAMLESS GRADIENT DISSOLVE INTO INTRODUCTION ── */}
+      <div className="absolute -bottom-px left-0 right-0 h-24 sm:h-28 bg-gradient-to-b from-transparent via-[#120E0B]/50 to-[#FAF8F3] pointer-events-none z-10" />
 
 
 

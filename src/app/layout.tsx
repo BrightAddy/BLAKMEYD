@@ -34,6 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
@@ -41,8 +42,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+        />
       </head>
-      <body className="min-h-full flex flex-col overflow-x-hidden">
+      <body suppressHydrationWarning className="min-h-full flex flex-col overflow-x-hidden">
         <Navbar />
         <main className="flex-1">{children}</main>
       </body>

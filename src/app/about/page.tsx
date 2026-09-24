@@ -1,6 +1,6 @@
-import AboutHero from "@/components/about/AboutHero";
-import AtelierIntro from "@/components/home/AtelierIntro";
-import WhyBlakMeyd from "@/components/home/WhyBlakMeyd";
+import AboutHero from "./AboutHero";
+import AtelierIntro from "./AtelierIntro";
+import WhyBlakMeyd from "@/app/home/WhyBlakMeyd";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {

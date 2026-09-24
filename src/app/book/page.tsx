@@ -1,5 +1,5 @@
-import BookingAvailability from "@/components/home/BookingAvailability";
-import ConsultationCTA from "@/components/home/ConsultationCTA";
+import BookingAvailability from "./BookingAvailability";
+import ConsultationCTA from "@/app/home/ConsultationCTA";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {

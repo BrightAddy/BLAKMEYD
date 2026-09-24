@@ -1,4 +1,4 @@
-import FeaturedWork from "@/components/home/FeaturedWork";
+import FeaturedWork from "./FeaturedWork";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {

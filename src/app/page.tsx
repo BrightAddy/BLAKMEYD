@@ -1,8 +1,13 @@
-import AtelierHero from "@/components/hero/AtelierHero";
-import HomeExperience from "@/components/home/HomeExperience";
-import HomeFeaturedWork from "@/components/home/HomeFeaturedWork";
-import HomeJourney from "@/components/home/HomeJourney";
-import HomeConsultationCTA from "@/components/home/HomeConsultationCTA";
+import AtelierHero from "./home/AtelierHero";
+import HomeIntro from "./home/HomeIntro";
+import FeaturedCollections from "./home/FeaturedCollections";
+import HomeExperience from "./home/HomeExperience";
+import HomeProcess from "./home/HomeProcess";
+import BridalSpecialOccasions from "./home/BridalSpecialOccasions";
+import HomeSignatureCollections from "./home/HomeSignatureCollections";
+import WhyBlakMeyd from "./home/WhyBlakMeyd";
+import Testimonials from "./home/Testimonials";
+import ConsultationCTA from "./home/ConsultationCTA";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
@@ -14,23 +19,42 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#FBF9F4] text-[#15150F] selection:bg-[#B98A2E] selection:text-[#15150F]">
-      {/* ── 01: EXISTING ATELIER HAUTE COUTURE HERO (UNTOUCHED & APPROVED) ── */}
+      {/* ── 01: HERO ── */}
       <AtelierHero />
 
-      {/* ── 02: THE BLAK MEYD EXPERIENCE (PERSONAL, INTENTIONAL, EXCEPTIONAL) ── */}
+      {/* ── 02: INTRODUCTION ── */}
+      <HomeIntro />
+
+      {/* ── 03: FEATURED COLLECTIONS ── */}
+      <FeaturedCollections />
+
+      {/* ── 04: THE BLAK MEYD EXPERIENCE ── */}
       <HomeExperience />
 
-      {/* ── 03: FEATURED WORK (CRAFTED STORIES VISUAL SHOWCASE) ── */}
-      <HomeFeaturedWork />
+      {/* ── 05: OUR PROCESS ── */}
+      <HomeProcess />
 
-      {/* ── 04: YOUR JOURNEY (5-STAGE PROTOCOL & INTEGRATED TESTIMONIAL) ── */}
-      <HomeJourney />
+      {/* ── 06: BRIDAL & SPECIAL OCCASIONS ── */}
+      <BridalSpecialOccasions />
 
-      {/* ── 05: CONSULTATION CTA (CINEMATIC CLOSING INVITATION) ── */}
-      <HomeConsultationCTA />
+      {/* ── 07: SIGNATURE COLLECTIONS ── */}
+      <HomeSignatureCollections />
 
-      {/* ── 06: ATELIER FOOTER ── */}
+      {/* ── 08: WHY BLAK MEYD ── */}
+      <WhyBlakMeyd />
+
+      {/* ── 09: CLIENT STORIES ── */}
+      <Testimonials />
+
+      {/* ── 10: BOOK A CONSULTATION (FINAL CTA) ── */}
+      <ConsultationCTA />
+
+      {/* ── 11: FOOTER ── */}
       <Footer />
     </div>
   );
 }
+
+
+
+

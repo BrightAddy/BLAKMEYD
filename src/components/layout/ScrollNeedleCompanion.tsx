@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export default function ScrollNeedleCompanion() {
   const { scrollYProgress } = useScroll();
@@ -18,10 +18,11 @@ export default function ScrollNeedleCompanion() {
   // Reveal companion as user scrolls past initial hero entrance (~15% of total page)
   const opacity = useTransform(smoothProgress, [0.08, 0.15], [0, 1]);
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   if (!mounted) return null;
 

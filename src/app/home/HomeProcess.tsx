@@ -138,7 +138,7 @@ export default function HomeProcess() {
             {/* Narrative Subtitle */}
             <p className="mt-3 sm:mt-4 text-[13.5px] sm:text-[14px] leading-relaxed text-[#554E45] font-sans max-w-xl">
               From the first conversation to the final fitting, our process is
-              designed to be personal, seamless and enjoyable — with every detail
+              designed to be personal, seamless and enjoyable, with every detail
               handled with care.
             </p>
 

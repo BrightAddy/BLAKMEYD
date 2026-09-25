@@ -51,25 +51,20 @@ export default function AboutHero() {
   return (
     <section
       className="relative w-full h-screen min-h-[660px] max-h-[1100px] bg-[#120E0B] text-[#FBF9F4] overflow-hidden select-none"
-      aria-label="About Blak Meyd — Rooted in Heritage"
+      aria-label="About Blak Meyd: Rooted in Heritage"
     >
       {/* ── 01: FULL-BLEED HIGH-DEFINITION ATELIER PHOTOGRAPHY BACKGROUND ── */}
-      <motion.div
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1.0 }}
-        transition={{ duration: 12, ease: "easeOut" }}
-        className="absolute inset-0 z-0"
-      >
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/images/about/about-atelier-designer.jpg"
           alt="Blak Meyd bespoke haute couture atelier salon in Accra"
           fill
           priority
-          quality={98}
+          quality={100}
           sizes="100vw"
-          className="object-cover object-[center_35%]"
+          className="object-cover object-[center_45%]"
         />
-      </motion.div>
+      </div>
 
       {/* ── 02: CINEMATIC LUXURY OVERLAYS (ENSURES PRISTINE TYPOGRAPHY CONTRAST) ── */}
       {/* Left dark scrim for sharp text contrast */}
@@ -81,8 +76,6 @@ export default function AboutHero() {
       {/* Subtle warm amber/gold atmospheric vignette */}
       <div className="absolute inset-0 z-1 pointer-events-none bg-[radial-gradient(circle_at_25%_60%,rgba(185,138,46,0.08),transparent_65%)]" />
 
-      {/* ── 03: SEAMLESS GRADIENT DISSOLVE INTO NEXT SECTION (#FBF9F4) ── */}
-      <div className="absolute -bottom-px left-0 right-0 h-32 sm:h-44 bg-gradient-to-b from-transparent via-[#120E0B]/50 to-[#FBF9F4] pointer-events-none z-10" />
 
       {/* ── 04: HERO CONTENT WRAPPER ── */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col justify-between pt-32 sm:pt-36 pb-8 sm:pb-10">
@@ -106,7 +99,7 @@ export default function AboutHero() {
 
           {/* Editorial Narrative Paragraph */}
           <p className="mt-5 sm:mt-6 text-xs sm:text-sm text-[#FBF9F4]/85 font-light leading-relaxed max-w-xl drop-shadow-md">
-            At Blak Meyd, we believe fashion is more than fabric — it is a story, a culture,
+            At Blak Meyd, we believe fashion is more than fabric: it is a story, a culture,
             and a reflection of who you are. Born in Ghana, our atelier creates bespoke pieces
             that celebrate individuality, heritage and modern elegance, designed for life&rsquo;s most meaningful moments.
           </p>
@@ -139,7 +132,7 @@ export default function AboutHero() {
           {/* Animated Scroll to Explore Cue */}
           <a
             href="#heritage"
-            className="group inline-flex items-center gap-3 text-[10px] sm:text-[10.5px] tracking-[0.24em] font-mono text-[#15150F] hover:text-[#0E3B2E] transition-colors"
+            className="group inline-flex items-center gap-3 text-[10px] sm:text-[10.5px] tracking-[0.24em] font-mono text-[#FBF9F4]/80 hover:text-[#B98A2E] transition-colors"
             aria-label="Scroll to explore our heritage"
           >
             <span className="relative flex h-7 w-[1.5px] bg-[#B98A2E]/50 overflow-hidden rounded-full">

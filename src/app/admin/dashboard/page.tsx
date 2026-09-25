@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Admin Dashboard — Blak Meyd Atelier",
+  title: "Admin Dashboard | Blak Meyd Atelier",
 };
 
 export default function AdminDashboardPage() {

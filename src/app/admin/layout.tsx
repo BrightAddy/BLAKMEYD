@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Admin Atelier Portal — Blak Meyd",
+  title: "Admin Atelier Portal | Blak Meyd",
   description: "Internal atelier management portal for Blak Meyd couture.",
 };
 

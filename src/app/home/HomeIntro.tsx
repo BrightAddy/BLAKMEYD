@@ -117,7 +117,7 @@ export default function HomeIntro() {
     <section
       id="introduction"
       className="relative w-full bg-[#FBF9F4] text-[#15150F] py-12 sm:py-16 lg:py-20 overflow-hidden select-text border-t border-[#B98A2E]/15"
-      aria-label="Introduction — Blak Meyd Haute Couture"
+      aria-label="Introduction: Blak Meyd Haute Couture"
     >
       {/* Subtle ambient luxury radial glows */}
       <div
@@ -194,13 +194,13 @@ export default function HomeIntro() {
               <p>
                 Founded in the vibrant heart of Accra, <strong className="font-semibold text-[#15150F]">Blak Meyd</strong> is
                 a premier Ghanaian bespoke couture atelier sculpting heirloom eveningwear, bridal reception silhouettes,
-                and architectural ceremonial garments. We design with deep intention—for women who honor craftsmanship,
+                and architectural ceremonial garments. We design with deep intention, for women who honor craftsmanship,
                 ancestral authenticity, and distinct personal style.
               </p>
               <p className="text-[#4F4A42]/90">
                 Every commission begins with an intimate creative dialogue, hand-drafted custom patterns sculpted to
                 your exact measurements, and centuries-old Ghanaian textile lineages harmonized with modern corsetry.
-                At Blak Meyd, we do not follow fleeting trends—we create timeless statements of self-expression.
+                At Blak Meyd, we do not follow fleeting trends; we create timeless statements of self-expression.
               </p>
             </motion.div>
 

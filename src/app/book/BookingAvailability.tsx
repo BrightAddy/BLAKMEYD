@@ -149,7 +149,7 @@ export default function BookingAvailability() {
         {/* ── ATELIER STUDIO HOURS FOOTNOTE ── */}
         <div className="mt-8 p-4 sm:p-5 bg-[#16120E] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-white/60">
           <div>
-            <span className="text-white">Studio Hours:</span> Mon – Fri: 9:00 AM – 6:00 PM GMT &bull; Sat: By VIP Appointment &bull; Sun: Closed
+            <span className="text-white">Studio Hours:</span> Mon to Fri: 9:00 AM to 6:00 PM GMT &bull; Sat: By VIP Appointment &bull; Sun: Closed
           </div>
           <div className="text-[#B98A2E]">
             All appointments booked in advance &bull; Zero walk-ins

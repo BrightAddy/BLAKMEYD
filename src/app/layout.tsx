@@ -28,7 +28,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Blak Meyd — Bespoke Fashion Atelier",
+  title: "Blak Meyd | Bespoke Fashion Atelier",
   description:
     "Bespoke luxury fashion by Blak Meyd. Handcrafted garments made to your exact measurements. Kente gowns, bridal, graduation, and more. Book a consultation today.",
 };

@@ -1,4 +1,6 @@
 import AboutHero from "./AboutHero";
+import AboutStory from "./AboutStory";
+import AboutInspiration from "./AboutInspiration";
 import AtelierIntro from "./AtelierIntro";
 import WhyBlakMeyd from "@/app/home/WhyBlakMeyd";
 import Footer from "@/components/layout/Footer";
@@ -15,12 +17,22 @@ export default function AboutPage() {
       {/* ── 01: ABOUT HERO (ROOTED IN HERITAGE. DESIGNED FOR YOU.) ── */}
       <AboutHero />
 
-      {/* ── 02: ATELIER LINEAGE & MANIFESTO ── */}
+      {/* ── 02: OUR STORY — CHAPTER 1 (ROOTED IN HERITAGE. SCULPTED WITH INTENTION.) ── */}
       <div id="heritage">
+        <AboutStory />
+      </div>
+
+      {/* ── 03: OUR STORY — CHAPTER 2 (FROM INSPIRATION TO TIMELESS PIECES.) ── */}
+      <div id="inspiration">
+        <AboutInspiration />
+      </div>
+
+      {/* ── 04: ATELIER LINEAGE & MANIFESTO ── */}
+      <div id="manifesto">
         <AtelierIntro />
       </div>
 
-      {/* ── 03: THE BLAK MEYD CRAFT PHILOSOPHY ── */}
+      {/* ── 04: THE BLAK MEYD CRAFT PHILOSOPHY ── */}
       <div id="philosophy">
         <WhyBlakMeyd />
       </div>

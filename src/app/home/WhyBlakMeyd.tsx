@@ -87,7 +87,7 @@ export default function WhyBlakMeyd() {
 
               {/* Narrative Subtitle */}
               <p className="mt-4 sm:mt-5 text-[13px] sm:text-[14px] leading-relaxed text-[#554E45] font-sans max-w-md">
-                We believe true style goes beyond trends — it&apos;s a reflection of
+                We believe true style goes beyond trends: it&apos;s a reflection of
                 who you are. At Blak Meyd, every piece is born from a
                 collaboration, combining your vision with our expertise to create
                 garments that are intentional, meaningful and uniquely yours.

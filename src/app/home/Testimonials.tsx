@@ -24,7 +24,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     name: "E F U A",
     category: "OCCASION WEAR CLIENT",
     quote:
-      "From our first consultation to the final fitting, everything was seamless. My outfit was exactly what I envisioned — even better. I’ve never felt more confident.",
+      "From our first consultation to the final fitting, everything was seamless. My outfit was exactly what I envisioned, even better. I’ve never felt more confident.",
     tagline: "MORE THAN AN OUTFIT, IT WAS A VERSION OF ME.",
   },
   {
@@ -151,7 +151,7 @@ export default function Testimonials() {
             <div className="hidden lg:block w-[1px] h-20 bg-[#15150F]/20 flex-shrink-0" />
             <div>
               <p className="font-serif italic text-sm sm:text-[15px] leading-relaxed text-[#554E45]">
-                From brides to professionals, from milestone celebrations to everyday elegance — our clients choose Blak Meyd for pieces that fit their lives, their stories and their individuality.
+                From brides to professionals, from milestone celebrations to everyday elegance, our clients choose Blak Meyd for pieces that fit their lives, their stories and their individuality.
               </p>
               <div className="flex items-center gap-2 mt-3 text-[10px] tracking-[0.24em] uppercase text-[#736C61] font-sans font-medium">
                 <span className="h-[1px] w-6 bg-[#15150F]/40 inline-block" />
@@ -230,7 +230,7 @@ export default function Testimonials() {
         {/* Hover Cue Banner */}
         <div className="text-center mt-3">
           <span className="text-[9px] sm:text-[9.5px] tracking-[0.26em] uppercase text-[#8E877B] font-sans font-medium">
-            — Hover any story to pause and read —
+            Hover any story to pause and read
           </span>
         </div>
       </div>

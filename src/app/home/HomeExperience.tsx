@@ -81,7 +81,7 @@ export default function HomeExperience() {
             {/* Narrative Subtitle */}
             <p className="mt-4 sm:mt-5 text-[13.5px] sm:text-[14.5px] leading-relaxed text-[#554E45] font-sans max-w-lg">
               At Blak Meyd, we create more than garments. We create a personal
-              journey — one defined by attention, artistry and a genuine
+              journey, defined by attention, artistry and a genuine
               commitment to you.
             </p>
 

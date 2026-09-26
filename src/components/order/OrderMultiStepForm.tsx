@@ -66,68 +66,14 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
     }
   };
 
-  // Step Validation
-  const validateStep = (stepNumber: number): boolean => {
-    const newErrors: Record<string, string> = {};
-
-    if (stepNumber === 1) {
-      if (!formData.clientName.trim()) {
-        newErrors.clientName = "Please enter your full name";
-      }
-      if (!formData.contactDetails.trim()) {
-        newErrors.contactDetails = "Please enter your contact phone number";
-      }
-      if (!formData.email.trim()) {
-        newErrors.email = "Please enter your email address";
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        newErrors.email = "Please enter a valid email address";
-      }
-      if (!formData.address.trim()) {
-        newErrors.address = "Please enter your delivery or studio fitting address";
-      }
-    } else if (stepNumber === 2) {
-      if (!formData.garmentOccasion.trim()) {
-        newErrors.garmentOccasion = "Please specify the occasion for your garment";
-      }
-      if (!formData.eventDate) {
-        newErrors.eventDate = "Please select the date of your event";
-      }
-      if (!formData.pickupDate) {
-        newErrors.pickupDate = "Please select your preferred completion / pickup date";
-      }
-    } else if (stepNumber === 3) {
-      if (!formData.bust.trim()) {
-        newErrors.bust = "Please enter bust measurement";
-      }
-      if (!formData.waist.trim()) {
-        newErrors.waist = "Please enter waist measurement";
-      }
-      if (!formData.hip.trim()) {
-        newErrors.hip = "Please enter hip measurement";
-      }
-      if (!formData.dressLength.trim()) {
-        newErrors.dressLength = "Please enter dress length measurement";
-      }
-    } else if (stepNumber === 4) {
-      if (!formData.designDetails.trim() || formData.designDetails.trim().length < 8) {
-        newErrors.designDetails =
-          "Please provide details regarding your design, colour, silhouette, or styling preferences";
-      }
-    } else if (stepNumber === 6) {
-      if (!formData.acknowledgedTerms) {
-        newErrors.acknowledgedTerms =
-          "Please acknowledge that final pricing is confirmed following atelier review";
-      }
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  // Step Validation (Relaxed / non-blocking to allow free preview and navigation across all steps)
+  const validateStep = (_stepNumber: number): boolean => {
+    setErrors({});
+    return true;
   };
 
   // Navigation handlers
   const handleContinue = () => {
-    if (!validateStep(currentStep)) return;
-
     if (currentStep < 7) {
       setDirection(1);
       setCurrentStep((prev) => prev + 1);
@@ -197,19 +143,8 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
     }
   };
 
-  // Order Submission
+  // Order Submission (Non-blocking for seamless preview & test submissions)
   const handleSubmitOrder = async () => {
-    // Validate required steps
-    if (
-      !validateStep(1) ||
-      !validateStep(2) ||
-      !validateStep(3) ||
-      !validateStep(4) ||
-      !validateStep(6)
-    ) {
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
@@ -218,7 +153,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
       const generatedRef = `BM-ORD-${randomCode}`;
 
       // Simulate network persistence delay
-      await new Promise((resolve) => setTimeout(resolve, 1400));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setOrderReference(generatedRef);
       setIsSubmitted(true);
@@ -480,16 +415,16 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                   >
                     <button
                       type="button"
-                      disabled={step.id > currentStep}
                       onClick={() => handleJumpToStep(step.id)}
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-300 ${
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-300 cursor-pointer ${
                         isCurrent
-                          ? "bg-[#0E3B2E] text-[#B98A2E] border-2 border-[#B98A2E] ring-2 ring-[#B98A2E]/25 shadow-sm"
+                          ? "bg-[#0E3B2E] text-[#B98A2E] border-2 border-[#B98A2E] ring-2 ring-[#B98A2E]/25 shadow-sm scale-110"
                           : isCompleted
-                          ? "bg-[#FAF7F2] text-[#0E3B2E] border border-[#B98A2E] hover:bg-[#B98A2E]/10 cursor-pointer"
-                          : "bg-[#FBF9F4] text-[#15150F]/40 border border-[#DDD5C5] cursor-not-allowed"
+                          ? "bg-[#FAF7F2] text-[#0E3B2E] border border-[#B98A2E] hover:bg-[#B98A2E]/10"
+                          : "bg-[#FBF9F4] text-[#15150F]/70 border border-[#DDD5C5] hover:border-[#B98A2E] hover:text-[#0E3B2E]"
                       }`}
                       aria-current={isCurrent ? "step" : undefined}
+                      aria-label={`Go to step ${step.id}: ${step.label}`}
                     >
                       {isCompleted ? (
                         <Check className="w-3.5 h-3.5 text-[#B98A2E]" strokeWidth={2.2} />
@@ -498,35 +433,56 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                       )}
                     </button>
 
-                    <span
-                      className={`font-sans text-[9.5px] tracking-[0.16em] uppercase mt-2 max-w-[80px] leading-tight transition-colors ${
+                    <button
+                      type="button"
+                      onClick={() => handleJumpToStep(step.id)}
+                      className={`font-sans text-[9.5px] tracking-[0.16em] uppercase mt-2 max-w-[80px] leading-tight transition-colors cursor-pointer hover:text-[#0E3B2E] ${
                         isCurrent
                           ? "text-[#0E3B2E] font-semibold"
                           : isCompleted
                           ? "text-[#15150F]/80 font-normal"
-                          : "text-[#15150F]/40 font-light"
+                          : "text-[#15150F]/50 font-light"
                       }`}
                     >
                       {step.label}
-                    </span>
+                    </button>
                   </div>
                 );
               })}
             </div>
 
-            {/* Mobile Compact Progress Tracker */}
-            <div className="flex sm:hidden items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#0E3B2E] text-[#B98A2E] border border-[#B98A2E] flex items-center justify-center text-[10px] font-semibold">
-                  0{currentStep}
-                </span>
-                <span className="font-sans text-xs tracking-wider uppercase text-[#0E3B2E] font-semibold">
-                  {ORDER_STEPS[currentStep - 1].label}
+            {/* Mobile Compact Progress Tracker with Tap-to-jump Buttons */}
+            <div className="flex sm:hidden flex-col gap-2.5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-[#0E3B2E] text-[#B98A2E] border border-[#B98A2E] flex items-center justify-center text-[10px] font-semibold">
+                    0{currentStep}
+                  </span>
+                  <span className="font-sans text-xs tracking-wider uppercase text-[#0E3B2E] font-semibold">
+                    {ORDER_STEPS[currentStep - 1].label}
+                  </span>
+                </div>
+                <span className="font-sans text-[11px] tracking-widest text-[#B98A2E] font-medium">
+                  STEP 0{currentStep} OF 07
                 </span>
               </div>
-              <span className="font-sans text-[11px] tracking-widest text-[#B98A2E] font-medium">
-                STEP 0{currentStep} OF 07
-              </span>
+              {/* Mobile Quick Step Selector Buttons */}
+              <div className="flex items-center justify-between gap-1 pt-1 border-t border-[#DDD5C5]/40">
+                {ORDER_STEPS.map((step) => (
+                  <button
+                    key={step.id}
+                    type="button"
+                    onClick={() => handleJumpToStep(step.id)}
+                    className={`flex-1 py-1 text-[10px] font-mono font-medium rounded-[1px] transition-colors cursor-pointer ${
+                      step.id === currentStep
+                        ? "bg-[#0E3B2E] text-[#B98A2E]"
+                        : "bg-[#FAF7F2] text-[#15150F]/60 border border-[#DDD5C5]/70 hover:border-[#B98A2E]"
+                    }`}
+                  >
+                    0{step.id}
+                  </button>
+                ))}
+              </div>
             </div>
           </nav>
 
@@ -577,7 +533,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                           htmlFor="clientName"
                           className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                         >
-                          NAME OF CLIENT <span className="text-[#B98A2E]">*</span>
+                          NAME OF CLIENT
                         </label>
                         <input
                           id="clientName"
@@ -602,7 +558,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                           htmlFor="contactDetails"
                           className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                         >
-                          CONTACT DETAILS <span className="text-[#B98A2E]">*</span>
+                          CONTACT DETAILS
                         </label>
                         <input
                           id="contactDetails"
@@ -629,7 +585,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                           htmlFor="email"
                           className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                         >
-                          EMAIL ADDRESS <span className="text-[#B98A2E]">*</span>
+                          EMAIL ADDRESS
                         </label>
                         <input
                           id="email"
@@ -673,7 +629,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="address"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        ADDRESS <span className="text-[#B98A2E]">*</span>
+                        ADDRESS
                       </label>
                       <textarea
                         id="address"
@@ -724,7 +680,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="garmentOccasion"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        GARMENT OCCASION <span className="text-[#B98A2E]">*</span>
+                        GARMENT OCCASION
                       </label>
                       <input
                         id="garmentOccasion"
@@ -771,7 +727,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                           htmlFor="eventDate"
                           className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                         >
-                          EVENT DATE <span className="text-[#B98A2E]">*</span>
+                          EVENT DATE
                         </label>
                         <div className="relative">
                           <input
@@ -797,7 +753,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                           htmlFor="pickupDate"
                           className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                         >
-                          PICKUP DATE <span className="text-[#B98A2E]">*</span>
+                          PICKUP DATE
                         </label>
                         <div className="relative">
                           <input
@@ -884,7 +840,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="bust"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        BUST ({formData.measurementUnit}) <span className="text-[#B98A2E]">*</span>
+                        BUST ({formData.measurementUnit})
                       </label>
                       <input
                         id="bust"
@@ -909,7 +865,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="waist"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        WAIST ({formData.measurementUnit}) <span className="text-[#B98A2E]">*</span>
+                        WAIST ({formData.measurementUnit})
                       </label>
                       <input
                         id="waist"
@@ -934,7 +890,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="hip"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        HIP ({formData.measurementUnit}) <span className="text-[#B98A2E]">*</span>
+                        HIP ({formData.measurementUnit})
                       </label>
                       <input
                         id="hip"
@@ -959,8 +915,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         htmlFor="dressLength"
                         className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2"
                       >
-                        DRESS LENGTH ({formData.measurementUnit}){" "}
-                        <span className="text-[#B98A2E]">*</span>
+                        DRESS LENGTH ({formData.measurementUnit})
                       </label>
                       <input
                         id="dressLength"
@@ -1015,7 +970,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                       htmlFor="designDetails"
                       className="block font-sans text-[10px] tracking-[0.24em] uppercase text-[#15150F]/70 font-medium mb-2.5"
                     >
-                      DESIGN COLOUR & DETAILS <span className="text-[#B98A2E]">*</span>
+                      DESIGN COLOUR & DETAILS
                     </label>
                     <textarea
                       id="designDetails"
@@ -1359,7 +1314,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Name
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.clientName}
+                            {formData.clientName || "Not provided"}
                           </span>
                         </div>
                         <div>
@@ -1367,7 +1322,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Contact
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.contactDetails}
+                            {formData.contactDetails || "Not provided"}
                           </span>
                         </div>
                         <div>
@@ -1375,7 +1330,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Email
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.email}
+                            {formData.email || "Not provided"}
                           </span>
                         </div>
                         <div>
@@ -1391,7 +1346,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Address
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.address}
+                            {formData.address || "Not provided"}
                           </span>
                         </div>
                       </div>
@@ -1417,7 +1372,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Occasion
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.garmentOccasion}
+                            {formData.garmentOccasion || "Bespoke Garment"}
                           </span>
                         </div>
                         <div>
@@ -1425,7 +1380,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Event Date
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.eventDate}
+                            {formData.eventDate || "To be confirmed"}
                           </span>
                         </div>
                         <div>
@@ -1433,7 +1388,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Pickup Date
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.pickupDate}
+                            {formData.pickupDate || "To be confirmed"}
                           </span>
                         </div>
                       </div>
@@ -1459,7 +1414,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Bust
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.bust} {formData.measurementUnit}
+                            {formData.bust ? `${formData.bust} ${formData.measurementUnit}` : "—"}
                           </span>
                         </div>
                         <div>
@@ -1467,7 +1422,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Waist
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.waist} {formData.measurementUnit}
+                            {formData.waist ? `${formData.waist} ${formData.measurementUnit}` : "—"}
                           </span>
                         </div>
                         <div>
@@ -1475,7 +1430,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Hip
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.hip} {formData.measurementUnit}
+                            {formData.hip ? `${formData.hip} ${formData.measurementUnit}` : "—"}
                           </span>
                         </div>
                         <div>
@@ -1483,7 +1438,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                             Dress Length
                           </span>
                           <span className="font-medium text-[#15150F]/90">
-                            {formData.dressLength} {formData.measurementUnit}
+                            {formData.dressLength ? `${formData.dressLength} ${formData.measurementUnit}` : "—"}
                           </span>
                         </div>
                       </div>
@@ -1504,7 +1459,7 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
                         </button>
                       </div>
                       <p className="font-sans text-xs text-[#15150F]/85 leading-relaxed whitespace-pre-wrap">
-                        {formData.designDetails}
+                        {formData.designDetails || "No custom design specifications entered yet."}
                       </p>
                     </div>
 

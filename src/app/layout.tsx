@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist_Mono, Alex_Brush, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
 
@@ -14,8 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const alexBrush = Alex_Brush({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-alex-brush",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Blak Meyd — Bespoke Fashion Atelier",
+  title: "Blak Meyd | Bespoke Fashion Atelier",
   description:
     "Bespoke luxury fashion by Blak Meyd. Handcrafted garments made to your exact measurements. Kente gowns, bridal, graduation, and more. Book a consultation today.",
 };
@@ -34,7 +47,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${fraunces.variable} ${geistMono.variable} ${alexBrush.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -42,7 +56,7 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap"
         />
       </head>
-      <body className="min-h-full flex flex-col overflow-x-hidden">
+      <body suppressHydrationWarning className="min-h-full flex flex-col overflow-x-hidden">
         <Navbar />
         <main className="flex-1">{children}</main>
       </body>

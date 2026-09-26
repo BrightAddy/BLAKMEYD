@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useId } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -259,7 +260,15 @@ const integrations: IntegrationItem[] = [
   },
 ];
 
-const AnimatedPath = ({ d, id }: { d: string; id: string }) => {
+const AnimatedPath = ({
+  d,
+  id,
+  delay = 0,
+}: {
+  d: string;
+  id: string;
+  delay?: number;
+}) => {
   return (
     <>
       <path
@@ -281,7 +290,7 @@ const AnimatedPath = ({ d, id }: { d: string; id: string }) => {
           duration: 4,
           repeat: Infinity,
           ease: "linear",
-          delay: Math.random() * 2,
+          delay,
         }}
       />
       <defs>
@@ -311,11 +320,12 @@ export function Integration() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {integrations.map((integration) => (
+        {integrations.map((integration, index) => (
           <AnimatedPath
             key={integration.id}
             d={integration.path}
             id={`${containerId}-${integration.id}`}
+            delay={(index * 0.4) % 2}
           />
         ))}
       </svg>
@@ -323,18 +333,20 @@ export function Integration() {
       {/* Center Logo */}
       <div className="absolute top-1/2 left-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg border border-border bg-background p-0.5 shadow-md sm:rounded-2xl sm:p-2 sm:shadow-xl">
         <div className="border p-1 rounded-lg sm:p-2.5 sm:rounded-xl">
-          <img
+          <Image
             src="https://cdn.21st.dev/assets/localized/957853b5639018e275a36ba6f77941315543dc3dfe74c5756ad1cd21262de54c.png"
             alt="logo"
             width={35}
             height={35}
+            unoptimized
             className="size-5 object-cover sm:size-9 block dark:hidden"
           />
-          <img
+          <Image
             src="https://cdn.21st.dev/assets/localized/14ea5dbc67d7e1e085d656ad41574121f53d0635cf0dfb11965fc8b642f9a053.png"
             alt="logo"
             width={35}
             height={35}
+            unoptimized
             className="size-5 object-cover sm:size-9 hidden dark:block"
           />
         </div>

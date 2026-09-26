@@ -50,6 +50,7 @@
   --font-general-sans:    'General Sans', system-ui, sans-serif;
   --font-sans:            'General Sans', system-ui, sans-serif;
   --font-heading:         var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-script:          var(--font-alex-brush), 'Alex Brush', cursive, sans-serif;
   --font-mono:            var(--font-geist-mono);
 
   /* Border radius — editorial/sharp */
@@ -147,6 +148,7 @@
 @layer utilities {
   .font-fraunces     { font-family: 'Fraunces', Georgia, serif; }
   .font-general-sans { font-family: 'General Sans', system-ui, sans-serif; }
+  .font-script { font-family: 'Alex Brush', cursive, sans-serif; }
 
   /* Gold underline on hover */
   .gold-underline { position: relative; }

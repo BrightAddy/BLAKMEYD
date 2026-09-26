@@ -111,7 +111,7 @@ export default function ConsultationCTA() {
       y: 0,
       transition: {
         duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
   };
@@ -123,7 +123,7 @@ export default function ConsultationCTA() {
       scale: 1,
       transition: {
         duration: 0.9,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
   };

@@ -79,7 +79,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="group flex items-center gap-2.5 sm:gap-3 lg:gap-3.5 select-none flex-shrink-0 justify-self-start"
-            aria-label="Blak Meyd — Wear Your Story"
+            aria-label="Blak Meyd: Wear Your Story"
           >
             {/* Gold Monogram Logo */}
             <div className="relative h-9 w-9 sm:h-10 sm:w-10 lg:h-10 lg:w-10 xl:h-11 xl:w-11 flex-shrink-0">

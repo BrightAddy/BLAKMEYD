@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,8 +22,22 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNavHidden, setIsNavHidden] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleNavChange = () => {
+      if (typeof document !== "undefined") {
+        setIsNavHidden(document.body.getAttribute("data-hide-nav") === "true");
+      }
+    };
+    handleNavChange();
+    window.addEventListener("blakmeyd:nav-state", handleNavChange);
+    return () => {
+      window.removeEventListener("blakmeyd:nav-state", handleNavChange);
+    };
+  }, []);
 
   const { scrollY } = useScroll();
 
@@ -56,7 +70,13 @@ export default function Navbar() {
 
   const isContact = pathname === "/contact" || pathname?.startsWith("/contact");
   const isLookbook = pathname === "/lookbook" || pathname?.startsWith("/lookbook");
-  const isDarkText = isContact || isLookbook;
+  const isOrder = pathname === "/order" || pathname?.startsWith("/order");
+  const isDarkText = isContact || isLookbook || isOrder;
+  const isLightNav = isDarkText;
+
+  if (isNavHidden) {
+    return null;
+  }
 
   return (
     <>
@@ -66,7 +86,7 @@ export default function Navbar() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isContact
+          isContact || isOrder
             ? isScrolled
               ? "bg-[#FBF9F4]/98 backdrop-blur-md border-b border-[#DDD5C5]/80 py-3 sm:py-3.5 shadow-sm"
               : "bg-[#FBF9F4]/92 backdrop-blur-sm border-b border-[#DDD5C5]/60 py-3.5 sm:py-4 lg:py-5"

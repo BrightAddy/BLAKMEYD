@@ -14,6 +14,11 @@
 /* ─── Tailwind custom variant ─── */
 @custom-variant dark (&:is(.dark *));
 
+/* Hide global header when in focused order workflow */
+body[data-hide-nav="true"] header[role="banner"] {
+  display: none !important;
+}
+
 /* ─────────────────────────────────────────────────────
    BRAND DESIGN TOKENS
    ───────────────────────────────────────────────────── */

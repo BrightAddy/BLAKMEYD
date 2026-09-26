@@ -54,6 +54,8 @@ export default function Navbar() {
     lastScrollY.current = latest;
   });
 
+  const isContact = pathname === "/contact" || pathname?.startsWith("/contact");
+
   return (
     <>
       <motion.header
@@ -61,10 +63,14 @@ export default function Navbar() {
         animate={{ y: isVisible ? 0 : "-100%" }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
-          isScrolled
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          isContact
+            ? isScrolled
+              ? "bg-[#FBF9F4]/98 backdrop-blur-md border-b border-[#DDD5C5]/80 py-3 sm:py-3.5 shadow-sm"
+              : "bg-[#FBF9F4]/92 backdrop-blur-sm border-b border-[#DDD5C5]/60 py-3.5 sm:py-4 lg:py-5"
+            : isScrolled
             ? "bg-[#14100D]/95 backdrop-blur-xl border-b border-[#B98A2E]/30 shadow-[0_8px_30px_rgba(0,0,0,0.4)] py-3 sm:py-3.5"
-            : "bg-[#16120F]/65 backdrop-blur-md border-b border-white/10 py-3.5 sm:py-4 lg:py-5"
+            : "bg-transparent border-b border-transparent py-4 sm:py-5 lg:py-6"
         )}
         role="banner"
       >
@@ -88,16 +94,33 @@ export default function Navbar() {
             </div>
 
             {/* Separator | with balanced breathing room */}
-            <span className="text-base sm:text-lg lg:text-xl font-light text-[#B98A2E]/50 select-none pb-0.5 px-0.5">
+            <span
+              className={cn(
+                "text-base sm:text-lg lg:text-xl font-light select-none pb-0.5 px-0.5",
+                isContact ? "text-[#B98A2E]/70" : "text-[#B98A2E]/50"
+              )}
+            >
               |
             </span>
 
             {/* Brand Text */}
             <div className="flex flex-col items-start flex-shrink-0">
-              <span className="font-fraunces text-lg sm:text-xl lg:text-[21px] xl:text-2xl font-normal tracking-[0.16em] lg:tracking-[0.18em] text-[#FFFFFF] group-hover:text-[#B98A2E] transition-colors leading-none uppercase">
+              <span
+                className={cn(
+                  "font-fraunces text-lg sm:text-xl lg:text-[21px] xl:text-2xl font-normal tracking-[0.16em] lg:tracking-[0.18em] transition-colors leading-none uppercase",
+                  isContact
+                    ? "text-[#15150F] group-hover:text-[#0E3B2E]"
+                    : "text-[#FFFFFF] group-hover:text-[#B98A2E]"
+                )}
+              >
                 BLAK MEYD
               </span>
-              <div className="flex items-center gap-1.5 mt-1 text-[7px] sm:text-[8px] lg:text-[8.5px] xl:text-[9px] tracking-[0.22em] xl:tracking-[0.26em] font-medium text-[#C49D4F] uppercase">
+              <div
+                className={cn(
+                  "flex items-center gap-1.5 mt-1 text-[7px] sm:text-[8px] lg:text-[8.5px] xl:text-[9px] tracking-[0.22em] xl:tracking-[0.26em] font-medium uppercase",
+                  isContact ? "text-[#B98A2E]" : "text-[#C49D4F]"
+                )}
+              >
                 <span className="h-[1px] w-2 sm:w-2.5 bg-[#B98A2E]/70" />
                 <span>WEAR YOUR STORY</span>
                 <span className="h-[1px] w-2 sm:w-2.5 bg-[#B98A2E]/70" />
@@ -122,7 +145,11 @@ export default function Navbar() {
                   href={item.href}
                   className={cn(
                     "group relative text-[10.5px] xl:text-[11.5px] tracking-[0.16em] xl:tracking-[0.22em] font-medium uppercase transition-colors duration-200 py-1.5 whitespace-nowrap",
-                    isActive
+                    isContact
+                      ? isActive
+                        ? "text-[#0E3B2E] font-semibold"
+                        : "text-[#15150F]/75 hover:text-[#0E3B2E]"
+                      : isActive
                       ? "text-[#FFFFFF]"
                       : "text-[#E6E0D4]/80 hover:text-[#FFFFFF]"
                   )}
@@ -151,7 +178,12 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center justify-self-end flex-shrink-0">
             <Link
               href="/book"
-              className="relative inline-flex items-center justify-center px-4.5 xl:px-6 py-2 xl:py-2.5 rounded-[2px] border border-[#B98A2E] text-[#FFFFFF] text-[10px] xl:text-[11px] font-medium tracking-[0.16em] xl:tracking-[0.18em] uppercase transition-all duration-300 hover:bg-[#B98A2E] hover:text-[#15150F] shadow-sm hover:shadow-[0_4px_20px_rgba(185,138,46,0.3)] active:scale-[0.98] whitespace-nowrap"
+              className={cn(
+                "relative inline-flex items-center justify-center px-4.5 xl:px-6 py-2 xl:py-2.5 rounded-[2px] border border-[#B98A2E] text-[10px] xl:text-[11px] font-medium tracking-[0.16em] xl:tracking-[0.18em] uppercase transition-all duration-300 shadow-sm whitespace-nowrap",
+                isContact
+                  ? "text-[#15150F] hover:bg-[#B98A2E] hover:text-[#FBF9F4] active:scale-[0.98]"
+                  : "text-[#FFFFFF] hover:bg-[#B98A2E] hover:text-[#15150F] hover:shadow-[0_4px_20px_rgba(185,138,46,0.3)] active:scale-[0.98]"
+              )}
             >
               <span>Book a Consultation</span>
             </Link>
@@ -161,13 +193,21 @@ export default function Navbar() {
           <div className="flex items-center gap-3 lg:hidden">
             <Link
               href="/book"
-              className="px-3 py-1.5 border border-[#B98A2E] text-[10px] uppercase tracking-[0.16em] text-white font-medium hover:bg-[#B98A2E] hover:text-black transition-colors rounded-[2px]"
+              className={cn(
+                "px-3 py-1.5 border border-[#B98A2E] text-[10px] uppercase tracking-[0.16em] font-medium transition-colors rounded-[2px]",
+                isContact
+                  ? "text-[#15150F] hover:bg-[#B98A2E] hover:text-[#FBF9F4]"
+                  : "text-white hover:bg-[#B98A2E] hover:text-black"
+              )}
             >
               Consult
             </Link>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-white/90 hover:text-white"
+              className={cn(
+                "p-2 transition-colors",
+                isContact ? "text-[#15150F] hover:text-[#0E3B2E]" : "text-white/90 hover:text-white"
+              )}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -184,7 +224,12 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[65px] sm:top-[70px] left-0 right-0 z-40 bg-[#16120F]/98 backdrop-blur-2xl border-b border-[#B98A2E]/30 lg:hidden overflow-hidden shadow-2xl"
+            className={cn(
+              "fixed top-[65px] sm:top-[70px] left-0 right-0 z-40 lg:hidden overflow-hidden shadow-2xl",
+              isContact
+                ? "bg-[#FBF9F4]/98 border-b border-[#DDD5C5]"
+                : "bg-[#16120F]/98 backdrop-blur-2xl border-b border-[#B98A2E]/30"
+            )}
           >
             <div className="px-6 py-6 space-y-4 max-h-[calc(100vh-80px)] overflow-y-auto">
               {NAV_LINKS.map((item) => {
@@ -194,13 +239,25 @@ export default function Navbar() {
                     : pathname.startsWith(item.href);
 
                 return (
-                  <div key={item.label} className="border-b border-white/5 pb-3">
+                  <div
+                    key={item.label}
+                    className={cn(
+                      "border-b pb-3",
+                      isContact ? "border-[#15150F]/10" : "border-white/5"
+                    )}
+                  >
                     <Link
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
                         "block text-xs tracking-[0.2em] uppercase font-medium py-1 transition-colors",
-                        isActive ? "text-[#B98A2E]" : "text-white/90 hover:text-[#B98A2E]"
+                        isContact
+                          ? isActive
+                            ? "text-[#0E3B2E] font-semibold"
+                            : "text-[#15150F]/80 hover:text-[#0E3B2E]"
+                          : isActive
+                          ? "text-[#B98A2E]"
+                          : "text-white/90 hover:text-[#B98A2E]"
                       )}
                     >
                       {item.label}
@@ -222,7 +279,12 @@ export default function Navbar() {
                     href="https://wa.me/233559883589"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] text-[#E4ECE7]/70 hover:text-[#B98A2E] tracking-wider uppercase"
+                    className={cn(
+                      "text-[11px] tracking-wider uppercase",
+                      isContact
+                        ? "text-[#15150F]/70 hover:text-[#0E3B2E]"
+                        : "text-[#E4ECE7]/70 hover:text-[#B98A2E]"
+                    )}
                   >
                     WhatsApp Atelier (+233 55 988 3589)
                   </a>

@@ -24,10 +24,10 @@ import {
 } from "@/types/order";
 
 interface OrderMultiStepFormProps {
-  onExit: () => void;
+  onExit?: () => void;
 }
 
-export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps) {
+export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps = {}) {
   const shouldReduceMotion = useReducedMotion();
 
   // Master persistent form state
@@ -49,20 +49,6 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps) 
       formScrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [currentStep]);
-
-  // Ensure body attribute data-hide-nav is set while in the order form
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.setAttribute("data-hide-nav", "true");
-      window.dispatchEvent(new Event("blakmeyd:nav-state"));
-    }
-    return () => {
-      if (typeof document !== "undefined") {
-        document.body.removeAttribute("data-hide-nav");
-        window.dispatchEvent(new Event("blakmeyd:nav-state"));
-      }
-    };
-  }, []);
 
   // Update form fields
   const updateField = <K extends keyof OrderFormData>(
@@ -150,12 +136,11 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps) 
 
   const handleBack = () => {
     if (currentStep === 1) {
-      // Return to hero
-      if (typeof document !== "undefined") {
-        document.body.removeAttribute("data-hide-nav");
-        window.dispatchEvent(new Event("blakmeyd:nav-state"));
+      if (onExit) {
+        onExit();
+      } else if (typeof document !== "undefined") {
+        document.getElementById("order-hero")?.scrollIntoView({ behavior: "smooth" });
       }
-      onExit();
     } else {
       setDirection(-1);
       setCurrentStep((prev) => prev - 1);
@@ -406,13 +391,13 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps) 
             <button
               type="button"
               onClick={() => {
-                if (typeof document !== "undefined") {
-                  document.body.removeAttribute("data-hide-nav");
-                  window.dispatchEvent(new Event("blakmeyd:nav-state"));
+                if (onExit) {
+                  onExit();
+                } else if (typeof document !== "undefined") {
+                  document.getElementById("order-hero")?.scrollIntoView({ behavior: "smooth" });
                 }
-                onExit();
               }}
-              className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 border border-[#15150F]/20 text-[#15150F]/80 text-[11px] font-medium tracking-[0.2em] uppercase font-sans hover:bg-[#15150F]/5 transition-colors rounded-[1px]"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 border border-[#15150F]/20 text-[#15150F]/80 text-[11px] font-medium tracking-[0.2em] uppercase font-sans hover:bg-[#15150F]/5 transition-colors rounded-[1px] cursor-pointer"
             >
               Return to Atelier
             </button>

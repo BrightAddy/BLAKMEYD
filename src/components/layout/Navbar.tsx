@@ -22,22 +22,8 @@ export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNavHidden, setIsNavHidden] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleNavChange = () => {
-      if (typeof document !== "undefined") {
-        setIsNavHidden(document.body.getAttribute("data-hide-nav") === "true");
-      }
-    };
-    handleNavChange();
-    window.addEventListener("blakmeyd:nav-state", handleNavChange);
-    return () => {
-      window.removeEventListener("blakmeyd:nav-state", handleNavChange);
-    };
-  }, []);
 
   const { scrollY } = useScroll();
 
@@ -73,10 +59,6 @@ export default function Navbar() {
   const isOrder = pathname === "/order" || pathname?.startsWith("/order");
   const isDarkText = isContact || isLookbook || isOrder;
   const isLightNav = isDarkText;
-
-  if (isNavHidden) {
-    return null;
-  }
 
   return (
     <>

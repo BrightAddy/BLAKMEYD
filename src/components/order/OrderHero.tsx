@@ -109,18 +109,23 @@ export default function OrderHero({ onStartOrder }: OrderHeroProps) {
               custom={3}
               className="mb-10 sm:mb-12"
             >
-              <button
-                type="button"
-                onClick={() => {
+              <a
+                href="#order-form"
+                onClick={(e) => {
+                  e.preventDefault();
                   if (onStartOrder) {
                     onStartOrder();
+                  }
+                  const target = document.getElementById("order-form");
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 className="group inline-flex items-center justify-center gap-3 px-8 sm:px-9 py-3.5 sm:py-4 bg-[#0E3B2E] border border-[#B98A2E]/80 text-[#FBF9F4] text-[11px] sm:text-xs font-medium tracking-[0.22em] uppercase font-sans rounded-[1px] transition-all duration-300 shadow-sm hover:bg-[#07241C] hover:border-[#B98A2E] hover:shadow-[0_4px_20px_rgba(14,59,46,0.25)] active:scale-[0.99] w-full sm:w-auto cursor-pointer"
               >
                 <span>START YOUR ORDER</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#B98A2E] transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              </a>
             </motion.div>
 
             {/* 05: Restrained Editorial Detail */}

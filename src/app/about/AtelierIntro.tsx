@@ -57,7 +57,7 @@ export default function AtelierIntro() {
             {/* Haute Couture Quote */}
             <div className="relative pl-5 py-0.5 border-l-2 border-[#B98A2E]/50">
               <p className="font-fraunces text-base sm:text-lg italic text-[#15150F]/90 font-light leading-relaxed">
-                &ldquo;We do not construct off-the-rack garments. We sculpt heirloom identities. 
+                &ldquo;We do not construct ready to wear garments. We sculpt heirloom identities. 
                 Each commission is drafted once, cut for a single anatomy, and anchored in centuries of Ghanaian textile mastery.&rdquo;
               </p>
               <div className="flex items-center gap-2 mt-2 text-[10.5px] tracking-[0.2em] font-medium text-[#B98A2E] uppercase">

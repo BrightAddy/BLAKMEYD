@@ -15,7 +15,7 @@ export default function AboutInspiration() {
     <section
       id="inspiration"
       className="relative z-10 bg-[#120E0B] text-[#FBF9F4] py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-12 overflow-hidden border-t border-[#B98A2E]/25"
-      aria-label="Our Story: From Inspiration to Timeless Pieces"
+      aria-label="Our Story — From Inspiration to Timeless Pieces"
     >
       {/* ── AMBIENT HAUTE COUTURE GOLD GLOW (BEHIND VISUAL) ── */}
       <div
@@ -76,7 +76,7 @@ export default function AboutInspiration() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="font-serif text-[14px] sm:text-[15px] lg:text-[15.5px] leading-relaxed text-[#D8D2C6] font-light mt-5 sm:mt-6 max-w-lg"
             >
-              At Blak Meyd, every garment begins with a story: a woman,
+              At Blak Meyd, every garment begins with a story a woman,
               a moment, a vision. Rooted in Ghana, we blend heritage, artistry
               and contemporary design to create pieces that celebrate individuality
               and stand the test of time.

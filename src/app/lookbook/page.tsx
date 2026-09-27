@@ -1,29 +1,35 @@
-import FeaturedWork from "./FeaturedWork";
+import LookbookIntro from "./LookbookIntro";
+import LookbookGallery from "./LookbookGallery";
+import LookbookStories from "./LookbookStories";
+import LookbookGraduation from "./LookbookGraduation";
+import LookbookOccasions from "./LookbookOccasions";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
-  title: "Lookbook | BLAK MEYD Bespoke Haute Couture",
-  description: "Visual portfolio and archive of bespoke commissions sculpted by Blak Meyd atelier in Accra.",
+  title: "The Lookbook | BLAK MEYD Bespoke Haute Couture &bull; Accra",
+  description:
+    "A visual record of pieces made for real stories. Explore the archival bespoke couture portfolio of Blak Meyd atelier in Accra.",
 };
 
 export default function LookbookPage() {
   return (
-    <main className="min-h-screen bg-[#FBF9F4] text-[#15150F] pt-24">
-      {/* Page Header */}
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 pt-12 pb-8 border-b border-[#E4ECE7]">
-        <div className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.28em] uppercase text-[#B98A2E] mb-2">
-          <span className="h-[1px] w-6 bg-[#B98A2E]" />
-          <span>Visual Portfolio</span>
-        </div>
-        <h1 className="font-fraunces text-4xl sm:text-6xl font-light tracking-tight text-[#15150F]">
-          The Lookbook
-        </h1>
-        <p className="mt-3 text-sm text-[#15150F]/70 font-light max-w-2xl">
-          An archival photographic record of our most celebrated bespoke commissions, from state banquets and royal ceremonies to destination weddings across the diaspora.
-        </p>
-      </div>
+    <main className="min-h-screen bg-[#FBF9F4] text-[#15150F] selection:bg-[#0E3B2E] selection:text-[#FBF9F4]">
+      {/* ── 01: LOOKBOOK INTRODUCTION (FULL-BLEED EDITORIAL SPREAD) ── */}
+      <LookbookIntro />
 
-      <FeaturedWork />
+      {/* ── 02: LOOKBOOK SPREAD ONE (ITEMS 01, 02, 03: KENTE, BRIDAL, RECEPTION) ── */}
+      <LookbookGallery />
+
+      {/* ── 03: LOOKBOOK SPREAD TWO (ITEMS 04, 05, 06: BRIDESMAIDS, WEDDING GUEST, PHOTOSHOOT) ── */}
+      <LookbookStories />
+
+      {/* ── 04: LOOKBOOK SPREAD THREE (ITEM 07: GRADUATION OUTFITS / CONFIDENCE IN EVERY CHAPTER) ── */}
+      <LookbookGraduation />
+
+      {/* ── 05: LOOKBOOK SPREAD FOUR (ITEMS 08, 09: PROM DRESS & OTHER OUTFITS) ── */}
+      <LookbookOccasions />
+
+      {/* ── 06: ATELIER FOOTER ── */}
       <Footer />
     </main>
   );

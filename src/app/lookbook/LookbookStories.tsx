@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
@@ -13,6 +13,7 @@ interface StoryItem {
   narrative: string;
   image: string;
   alt: string;
+  colSpanClass: string;
   specs: {
     textile: string;
     hours: string;
@@ -27,12 +28,13 @@ const STORIES: StoryItem[] = [
     subtitle: "Together, beautifully.",
     narrative:
       "Coordinated pieces designed to complement the celebration while allowing each woman to retain her own unique presence.",
-    image: "/images/lookbook/session-04-bridesmaids.jpg",
-    alt: "Four Ghanaian bridesmaids wearing bespoke Blak Meyd olive sage green satin corset gowns holding white bouquets",
+    image: "/images/lookbook/lookbook-04-bridesmaids-couture-purple-v3.jpg",
+    alt: "Ghanaian bridesmaids wearing bespoke Blak Meyd architectural royal purple silk duchess satin couture gowns holding calla lily and orchid bouquets",
+    colSpanClass: "lg:col-span-4 xl:col-span-4",
     specs: {
-      textile: "Lustrous Olive Silk Duchess Satin and Micro Tulle",
-      hours: "140 Atelier Hours per Ensemble",
-      silhouette: "Sculpted Sweetheart Bodice with Thigh Slit",
+      textile: "Heavyweight Royal Purple Silk Duchess Satin",
+      hours: "155 Atelier Hours per Ensemble",
+      silhouette: "Architectural One Shoulder and Off Shoulder Cowl Corsetry",
     },
   },
   {
@@ -41,12 +43,13 @@ const STORIES: StoryItem[] = [
     subtitle: "Made for the moment.",
     narrative:
       "Refined silhouettes created for celebrations where being beautifully dressed is part of the occasion.",
-    image: "/images/lookbook/session-05-wedding-guest.jpg",
-    alt: "Regal Ghanaian wedding guest in bespoke gold and black off shoulder couture gown with traditional headwrap",
+    image: "/images/lookbook/lookbook-05-wedding-guest-candid-hd.jpg",
+    alt: "Glamorous Ghanaian wedding guest wearing bespoke bronze and gold couture evening gown in garden wedding in Accra",
+    colSpanClass: "lg:col-span-4 xl:col-span-4",
     specs: {
-      textile: "Bonwire Metallic Kente and Black Silk Velvet",
+      textile: "Shimmering Bronze and Gold Metallic Silk Crepe",
       hours: "165 Handcraft Hours",
-      silhouette: "Off Shoulder Corset Gown with Crown Drape",
+      silhouette: "Sculptural Off Shoulder Bodice with Side Train",
     },
   },
   {
@@ -55,10 +58,11 @@ const STORIES: StoryItem[] = [
     subtitle: "Designed to be remembered.",
     narrative:
       "Statement pieces created to come alive through movement, light and the camera.",
-    image: "/images/lookbook/session-06-photoshoot.jpg",
-    alt: "Ghanaian muse wearing dramatic scarlet red silk faille couture gown with voluminous ruffled sleeves",
+    image: "/images/lookbook/lookbook-06-photoshoot-editorial-hd.jpg",
+    alt: "Ghanaian muse wearing dramatic scarlet red silk faille couture gown with sculptural ruffled cascading puff sleeves",
+    colSpanClass: "lg:col-span-4 xl:col-span-4",
     specs: {
-      textile: "Scarlet Silk Faille and Layered French Organza",
+      textile: "Scarlet Red Heavy Silk Faille and Crisp Organza",
       hours: "190 Atelier Hours",
       silhouette: "Monumental Pleated Ruffle Sleeve Ballgown",
     },
@@ -68,79 +72,47 @@ const STORIES: StoryItem[] = [
 export default function LookbookStories() {
   const [activeStory, setActiveStory] = useState<StoryItem | null>(null);
 
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveStory(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section
       id="lookbook-stories"
-      className="relative z-10 bg-[#FBF9F4] text-[#15150F] w-full min-h-[100svh] lg:h-[100svh] lg:max-h-[100svh] flex flex-col justify-between py-4 sm:py-6 lg:py-6 xl:py-8 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 selection:bg-[#0E3B2E] selection:text-[#FBF9F4] overflow-hidden border-t border-[#15150F]/10"
-      aria-label="Lookbook Spread Two: Pieces For Every Chapter"
+      className="relative z-10 bg-[#FBF9F4] text-[#15150F] w-full min-h-[100svh] lg:h-[100svh] lg:max-h-[100svh] flex flex-col justify-between py-3 sm:py-4 lg:py-5 xl:py-6 px-3 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 selection:bg-[#0E3B2E] selection:text-[#FBF9F4] overflow-hidden border-t border-[#15150F]/10"
+      aria-label="Lookbook Spread: Sessions 04, 05, and 06"
     >
-      {/* ── SECTION HEADER (PIECES FOR EVERY CHAPTER) ── */}
-      <div className="w-full shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 sm:pb-5 border-b border-[#15150F]/10">
-        <div>
-          {/* Centered Small Eyebrow with CSS Hairlines */}
-          <div className="flex items-center gap-3 mb-1.5">
-            <span
-              className="inline-block w-8 sm:w-10 h-[1px] bg-[#C29D59]"
-              aria-hidden="true"
-            />
-            <span className="text-[10px] sm:text-[10.5px] font-sans font-semibold tracking-[0.26em] uppercase text-[#9E7B3B]">
-              MORE STORIES
-            </span>
-            <span
-              className="inline-block w-8 sm:w-10 h-[1px] bg-[#C29D59]"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Monumental Headline */}
-          <h2 className="font-fraunces text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-normal uppercase tracking-tight text-[#15150F] leading-none">
-            PIECES FOR EVERY CHAPTER.
-          </h2>
-        </div>
-
-        {/* Editorial Side Quote */}
-        <div className="flex items-center text-left max-w-xs xl:max-w-sm">
-          <span
-            className="w-[1.5px] h-10 bg-[#15150F]/25 mr-3.5 shrink-0"
-            aria-hidden="true"
-          />
-          <p className="text-[10.5px] xl:text-[11px] font-sans text-[#524D45] leading-relaxed uppercase tracking-[0.14em]">
-            Different occasions.
-            <br />
-            The same commitment to
-            <br />
-            craftsmanship, elegance
-            <br />
-            and individuality.
-          </p>
-        </div>
-      </div>
-
-      {/* ── THREE COLUMN EDITORIAL SPREAD (04, 05, 06) ── */}
-      <div className="flex-1 min-h-0 w-full py-3 lg:py-4">
-        <div className="h-full w-full grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 xl:gap-8 items-stretch">
+      {/* ── 16:9 THREE COLUMN EDITORIAL SPREAD ── */}
+      <div className="h-full w-full flex-1 min-h-0">
+        <div className="h-full w-full grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 items-stretch">
           {STORIES.map((story) => (
             <div
               key={story.number}
               className="h-full min-h-0 flex flex-col justify-between group"
             >
-              {/* Photo Card */}
-              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-[58%] xl:h-[62%] min-h-0 overflow-hidden bg-[#F5F2EB]">
+              {/* ── TOP SECTION: HIGH RESOLUTION PHOTOGRAPHIC PLATE (~62% OF SPREAD) ── */}
+              <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[62%] xl:h-[63%] min-h-0 overflow-hidden bg-[#F5F2EB]">
                 <Image
                   src={story.image}
                   alt={story.alt}
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  className="object-cover object-top lg:object-center group-hover:scale-[1.025] transition-transform duration-700 ease-out"
                 />
               </div>
 
-              {/* Text Block */}
-              <div className="flex-1 min-h-0 flex flex-col justify-between pt-3 sm:pt-4">
+              {/* ── BOTTOM SECTION: EDITORIAL TEXT BLOCK WITH VERTICAL ACCENT HAIRLINE (~38% OF SPREAD) ── */}
+              <div className="flex-1 min-h-0 flex flex-col justify-between pt-3.5 sm:pt-4 lg:pt-4 xl:pt-5 pl-4 sm:pl-5 lg:pl-5 xl:pl-6 border-l border-[#C29D59]/40">
                 <div>
                   {/* Number with Gold Hairline */}
-                  <div className="flex items-center gap-2.5 mb-1.5">
-                    <span className="font-fraunces text-2xl lg:text-2xl xl:text-3xl text-[#15150F] leading-none">
+                  <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
+                    <span className="font-fraunces text-2xl sm:text-3xl xl:text-4xl text-[#15150F] leading-none">
                       {story.number}
                     </span>
                     <span
@@ -150,27 +122,27 @@ export default function LookbookStories() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-fraunces text-lg sm:text-xl lg:text-xl xl:text-2xl font-normal uppercase tracking-tight text-[#15150F] leading-tight mb-1">
+                  <h3 className="font-fraunces text-xl sm:text-2xl xl:text-[26px] font-normal uppercase tracking-tight text-[#15150F] leading-tight mb-1 sm:mb-1.5">
                     {story.title}
                   </h3>
 
-                  {/* Italic Serif Subhead */}
-                  <p className="font-fraunces text-xs sm:text-[13px] italic font-normal text-[#9E7B3B] mb-2 leading-snug">
+                  {/* Italic Serif Subtitle in Antique Gold */}
+                  <p className="font-fraunces text-xs sm:text-[13px] xl:text-sm italic font-normal text-[#9E7B3B] mb-2 sm:mb-2.5 leading-snug">
                     {story.subtitle}
                   </p>
 
-                  {/* Narrative Paragraph */}
-                  <p className="text-[11px] sm:text-[11.5px] xl:text-xs font-sans text-[#524D45] leading-relaxed line-clamp-3">
+                  {/* Narrative Body Copy */}
+                  <p className="text-[11px] sm:text-xs xl:text-[12.5px] font-sans text-[#524D45] leading-relaxed line-clamp-3">
                     {story.narrative}
                   </p>
                 </div>
 
-                {/* View Story Action */}
+                {/* View Story Action Link */}
                 <div className="pt-2 sm:pt-3">
                   <button
                     type="button"
                     onClick={() => setActiveStory(story)}
-                    className="group inline-flex items-center gap-2 text-[10.5px] sm:text-[11px] font-sans font-medium tracking-[0.2em] uppercase text-[#15150F] hover:text-[#9E7B3B] transition-colors cursor-pointer"
+                    className="group inline-flex items-center gap-2 text-[10.5px] sm:text-[11px] xl:text-xs font-sans font-medium tracking-[0.2em] uppercase text-[#15150F] hover:text-[#9E7B3B] transition-colors cursor-pointer"
                   >
                     <span>VIEW STORY</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#15150F] group-hover:text-[#9E7B3B] group-hover:translate-x-1.5 transition-all duration-300" />
@@ -182,7 +154,7 @@ export default function LookbookStories() {
         </div>
       </div>
 
-      {/* ── BESPOKE STORY MODAL ── */}
+      {/* ── BESPOKE STORY MODAL (QUICK-VIEW EDITORIAL) ── */}
       <AnimatePresence>
         {activeStory && (
           <div

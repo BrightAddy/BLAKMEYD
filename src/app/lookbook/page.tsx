@@ -1,7 +1,5 @@
 import LookbookIntro from "./LookbookIntro";
 import LookbookGallery from "./LookbookGallery";
-import LookbookStories from "./LookbookStories";
-import LookbookGraduation from "./LookbookGraduation";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
@@ -16,14 +14,8 @@ export default function LookbookPage() {
       {/* ── 01: LOOKBOOK INTRODUCTION (FULL-BLEED EDITORIAL SPREAD) ── */}
       <LookbookIntro />
 
-      {/* ── 02: LOOKBOOK SPREAD ONE (ITEMS 01, 02, 03: KENTE, BRIDAL, RECEPTION) ── */}
+      {/* ── 02: COMPLETE ATELIER ARCHIVE (ALL 7 BESPOKE GARMENT SESSIONS) ── */}
       <LookbookGallery />
-
-      {/* ── 03: LOOKBOOK SPREAD TWO (ITEMS 04, 05, 06: BRIDESMAIDS, WEDDING GUEST, PHOTOSHOOT) ── */}
-      <LookbookStories />
-
-      {/* ── 04: LOOKBOOK SPREAD THREE (ITEM 07: GRADUATION OUTFITS) ── */}
-      <LookbookGraduation />
 
       {/* ── 05: ATELIER FOOTER ── */}
       <Footer />

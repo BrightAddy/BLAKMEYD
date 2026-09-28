@@ -28,8 +28,8 @@ const STORIES: StoryItem[] = [
     subtitle: "Together, beautifully.",
     narrative:
       "Coordinated pieces designed to complement the celebration while allowing each woman to retain her own unique presence.",
-    image: "/images/lookbook/lookbook-04-bridesmaids-couture-purple-v3.jpg",
-    alt: "Ghanaian bridesmaids wearing bespoke Blak Meyd architectural royal purple silk duchess satin couture gowns holding calla lily and orchid bouquets",
+    image: "/images/lookbook/lookbook-bridesmaids-candid-basket-phone.jpg",
+    alt: "Four stylish Ghanaian bridesmaids laughing together on an estate terrace with flower basket, phone, and calla lilies wearing bespoke royal purple gowns",
     colSpanClass: "lg:col-span-4 xl:col-span-4",
     specs: {
       textile: "Heavyweight Royal Purple Silk Duchess Satin",

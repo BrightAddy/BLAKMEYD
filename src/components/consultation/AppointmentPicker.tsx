@@ -25,17 +25,30 @@ export default function AppointmentPicker({
   onDateChange,
   onTimeChange,
 }: AppointmentPickerProps) {
-  // Parse currently selected date or default to October 2026 as in the reference
-  const initialDate = selectedDate ? new Date(selectedDate) : new Date(2026, 9, 14);
-  const [currentYear, setCurrentYear] = useState(initialDate.getFullYear() || 2026);
-  const [currentMonth, setCurrentMonth] = useState(initialDate.getMonth() || 9); // 0-indexed: 9 = October
+  // Today's midnight reference
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Parse currently selected date or default to today/future date
+  const parsedDate = selectedDate ? new Date(selectedDate) : today;
+  const initialDate = isNaN(parsedDate.getTime()) ? today : parsedDate;
+
+  const [currentYear, setCurrentYear] = useState(initialDate.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(initialDate.getMonth());
+
+  // Prevent navigating to months completely in the past
+  const isCurrentOrPastMonth =
+    currentYear < today.getFullYear() ||
+    (currentYear === today.getFullYear() && currentMonth <= today.getMonth());
 
   // Calendar calculations
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay(); // 0 = Sun, 1 = Mon...
+  const firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay(); // 0 = Sun
   const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
 
   const handlePrevMonth = () => {
+    if (isCurrentOrPastMonth) return; // Disallow going into past months
+
     if (currentMonth === 0) {
       setCurrentMonth(11);
       setCurrentYear(currentYear - 1);
@@ -54,6 +67,14 @@ export default function AppointmentPicker({
   };
 
   const handleSelectDay = (day: number) => {
+    const target = new Date(currentYear, currentMonth, day);
+    target.setHours(0, 0, 0, 0);
+
+    // Guard: Prevent selecting past days or closed Sundays
+    if (target.getTime() < today.getTime() || target.getDay() === 0) {
+      return;
+    }
+
     const monthPadded = String(currentMonth + 1).padStart(2, "0");
     const dayPadded = String(day).padStart(2, "0");
     const isoString = `${currentYear}-${monthPadded}-${dayPadded}`;
@@ -64,36 +85,48 @@ export default function AppointmentPicker({
   // Build grid days
   const calendarCells = [];
 
-  // Trailing days from previous month
+  // Trailing days from previous month (disabled)
   for (let i = firstDayOfWeek - 1; i >= 0; i--) {
     calendarCells.push({
       day: prevMonthDays - i,
       isCurrentMonth: false,
       isPast: true,
-      dayOfWeek: (firstDayOfWeek - 1 - i) % 7,
+      isSunday: false,
+      isToday: false,
+      isAvailable: false,
     });
   }
 
   // Days of current month
   for (let d = 1; d <= daysInMonth; d++) {
-    const dayOfWeek = (firstDayOfWeek + d - 1) % 7;
-    const isSunday = dayOfWeek === 0; // Atelier closed on Sunday
+    const cellDate = new Date(currentYear, currentMonth, d);
+    cellDate.setHours(0, 0, 0, 0);
+
+    const isPast = cellDate.getTime() < today.getTime();
+    const isSunday = cellDate.getDay() === 0;
+    const isToday = cellDate.getTime() === today.getTime();
+    const isAvailable = !isPast && !isSunday;
+
     calendarCells.push({
       day: d,
       isCurrentMonth: true,
-      isPast: isSunday, // closed Sundays
-      dayOfWeek,
+      isPast,
+      isSunday,
+      isToday,
+      isAvailable,
     });
   }
 
-  // Trailing days into next month to complete rows
+  // Trailing days into next month to complete rows (disabled)
   const remainingCells = (7 - (calendarCells.length % 7)) % 7;
   for (let n = 1; n <= remainingCells; n++) {
     calendarCells.push({
       day: n,
       isCurrentMonth: false,
       isPast: true,
-      dayOfWeek: (calendarCells.length + n - 1) % 7,
+      isSunday: false,
+      isToday: false,
+      isAvailable: false,
     });
   }
 
@@ -108,7 +141,7 @@ export default function AppointmentPicker({
           2. Select an Appointment
         </h2>
         <p className="mt-1 text-xs sm:text-[13px] font-sans text-[#736B5E]">
-          Choose a date and time that works for you.
+          Choose a date and time that works for you. Bookings are available for today and upcoming dates.
         </p>
       </div>
 
@@ -125,8 +158,13 @@ export default function AppointmentPicker({
               <button
                 type="button"
                 onClick={handlePrevMonth}
+                disabled={isCurrentOrPastMonth}
                 aria-label="Previous month"
-                className="w-8 h-8 rounded-full hover:bg-[#F4EFE6] flex items-center justify-center transition-colors text-[#15150F]"
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                  isCurrentOrPastMonth
+                    ? "text-[#D4CEBF] cursor-not-allowed opacity-35"
+                    : "text-[#15150F] hover:bg-[#F4EFE6] cursor-pointer"
+                }`}
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -134,7 +172,7 @@ export default function AppointmentPicker({
                 type="button"
                 onClick={handleNextMonth}
                 aria-label="Next month"
-                className="w-8 h-8 rounded-full hover:bg-[#F4EFE6] flex items-center justify-center transition-colors text-[#15150F]"
+                className="w-8 h-8 rounded-full hover:bg-[#F4EFE6] flex items-center justify-center transition-colors text-[#15150F] cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -156,11 +194,12 @@ export default function AppointmentPicker({
           {/* Day Cells Grid */}
           <div className="grid grid-cols-7 text-center gap-y-1">
             {calendarCells.map((cell, idx) => {
+              // Days from adjacent months
               if (!cell.isCurrentMonth) {
                 return (
                   <div
                     key={`muted-${idx}`}
-                    className="h-8 sm:h-9 flex items-center justify-center text-xs text-[#D4CEBF] font-sans"
+                    className="h-8 sm:h-9 flex items-center justify-center text-xs text-[#D4CEBF]/50 font-sans select-none"
                   >
                     {cell.day}
                   </div>
@@ -171,20 +210,23 @@ export default function AppointmentPicker({
               const dayPadded = String(cell.day).padStart(2, "0");
               const thisIsoDate = `${currentYear}-${monthPadded}-${dayPadded}`;
               const isSelected = selectedDate === thisIsoDate;
-              const isSunday = cell.dayOfWeek === 0;
 
-              if (isSunday) {
+              // Past Days or Closed Sundays (DISABLED & UNCLICKABLE)
+              if (!cell.isAvailable) {
                 return (
                   <div
-                    key={`sun-${cell.day}`}
-                    className="h-8 sm:h-9 flex items-center justify-center text-xs text-[#D4CEBF] font-sans cursor-not-allowed"
-                    title="Atelier closed on Sundays"
+                    key={`day-${cell.day}`}
+                    className="h-8 sm:h-9 flex items-center justify-center"
+                    title={cell.isSunday ? "Atelier closed on Sundays" : "Past date cannot be booked"}
                   >
-                    {cell.day}
+                    <span className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-xs font-sans text-[#D4CEBF] cursor-not-allowed select-none opacity-60">
+                      {cell.day}
+                    </span>
                   </div>
                 );
               }
 
+              // Available Days (Today and Days Ahead)
               return (
                 <div
                   key={`day-${cell.day}`}
@@ -193,23 +235,32 @@ export default function AppointmentPicker({
                   <button
                     type="button"
                     onClick={() => handleSelectDay(cell.day)}
-                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-sans transition-all flex items-center justify-center ${
+                    title={cell.isToday ? "Today (Available for booking)" : `Available on ${cell.day} ${MONTH_NAMES[currentMonth]}`}
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-sans transition-all flex items-center justify-center cursor-pointer relative ${
                       isSelected
                         ? "bg-[#9E7B3B] text-white font-semibold shadow-sm"
+                        : cell.isToday
+                        ? "border border-[#9E7B3B] text-[#15150F] font-semibold hover:bg-[#F4EFE6]"
                         : "text-[#15150F] hover:bg-[#F4EFE6] hover:text-[#9E7B3B]"
                     }`}
                   >
                     {cell.day}
+                    {cell.isToday && !isSelected && (
+                      <span className="absolute -bottom-0.5 w-1 h-1 rounded-full bg-[#9E7B3B]" />
+                    )}
                   </button>
                 </div>
               );
             })}
           </div>
 
-          {/* Studio note */}
-          <div className="mt-4 pt-3 border-t border-[#15150F]/5 text-[11px] text-[#736B5E] font-sans flex items-center justify-between">
+          {/* Studio Hours & Booking Rules Legend */}
+          <div className="mt-4 pt-3 border-t border-[#15150F]/5 text-[11px] text-[#736B5E] font-sans flex flex-wrap items-center justify-between gap-2">
             <span>Mon &ndash; Sat: 10:00 AM &ndash; 6:00 PM</span>
-            <span className="text-[#9E7B3B]">Sun: Closed</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-[#8E8678]">&bull; Past dates unavailable</span>
+              <span className="text-[#9E7B3B]">&bull; Sun: Closed</span>
+            </div>
           </div>
         </div>
 
@@ -229,7 +280,7 @@ export default function AppointmentPicker({
                     key={time}
                     type="button"
                     onClick={() => onTimeChange(time)}
-                    className={`py-2 px-2 text-xs font-sans rounded-sm transition-all duration-200 border text-center ${
+                    className={`py-2 px-2 text-xs font-sans rounded-sm transition-all duration-200 border text-center cursor-pointer ${
                       isSelected
                         ? "bg-[#0E3B2E] border-[#0E3B2E] text-white font-medium shadow-sm"
                         : "bg-white border-[#D4CEBF] text-[#15150F] hover:border-[#9E7B3B] hover:bg-[#FDFBF7]"

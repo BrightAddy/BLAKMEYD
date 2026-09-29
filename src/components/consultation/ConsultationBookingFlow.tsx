@@ -19,17 +19,39 @@ import {
   BookingRecord,
 } from "./types";
 
+// Helper to find the earliest available booking date (today or next open day)
+const getInitialBookingDate = () => {
+  const d = new Date();
+  // If today is Sunday (day 0), move to Monday
+  if (d.getDay() === 0) {
+    d.setDate(d.getDate() + 1);
+  }
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return {
+    iso: `${year}-${month}-${day}`,
+    formatted: `${d.getDate()} ${monthNames[d.getMonth()]} ${year}`,
+  };
+};
+
 export default function ConsultationBookingFlow() {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [confirmedBooking, setConfirmedBooking] = useState<BookingRecord | null>(null);
 
+  const initialDate = getInitialBookingDate();
+
   // Core Booking State
   const [details, setDetails] = useState<ConsultationDetails>({
     type: "non-bridal",
     fee: CONSULTATION_PRICING["non-bridal"].fee,
-    date: "2026-10-14",
-    dateFormatted: "14 October 2026",
+    date: initialDate.iso,
+    dateFormatted: initialDate.formatted,
     time: "2:00 PM",
     format: "in-person",
     firstName: "",
@@ -190,13 +212,14 @@ export default function ConsultationBookingFlow() {
 
   // Reset to book another appointment
   const handleReset = () => {
+    const freshDate = getInitialBookingDate();
     setConfirmedBooking(null);
     setCurrentStep(1);
     setDetails({
       type: "non-bridal",
       fee: CONSULTATION_PRICING["non-bridal"].fee,
-      date: "2026-10-14",
-      dateFormatted: "14 October 2026",
+      date: freshDate.iso,
+      dateFormatted: freshDate.formatted,
       time: "2:00 PM",
       format: "in-person",
       firstName: "",

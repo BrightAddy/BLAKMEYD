@@ -57,7 +57,8 @@ export default function Navbar() {
   const isContact = pathname === "/contact" || pathname?.startsWith("/contact");
   const isLookbook = pathname === "/lookbook" || pathname?.startsWith("/lookbook");
   const isOrder = pathname === "/order" || pathname?.startsWith("/order");
-  const isDarkText = isContact || isLookbook || isOrder;
+  const isBook = pathname === "/book" || pathname?.startsWith("/book") || pathname?.startsWith("/consultation");
+  const isDarkText = isContact || isLookbook || isOrder || isBook;
   const isLightNav = isDarkText;
 
   return (
@@ -68,7 +69,7 @@ export default function Navbar() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isContact || isOrder
+          isContact || isOrder || isBook
             ? isScrolled
               ? "bg-[#FBF9F4]/98 backdrop-blur-md border-b border-[#DDD5C5]/80 py-3 sm:py-3.5 shadow-sm"
               : "bg-[#FBF9F4]/92 backdrop-blur-sm border-b border-[#DDD5C5]/60 py-3.5 sm:py-4 lg:py-5"

@@ -113,7 +113,7 @@ export default function HomeExperience() {
             {/* Call To Action Button */}
             <div className="mt-8 sm:mt-10">
               <Link
-                href="/booking"
+                href="/book"
                 className="inline-flex items-center gap-3 bg-[#0E3B2E] hover:bg-[#08281E] text-[#FBF9F4] px-7 sm:px-9 py-3.5 sm:py-4 text-[11px] sm:text-xs tracking-[0.22em] uppercase font-semibold transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#B98A2E]/60 border border-transparent group"
               >
                 <span>Begin Your Journey</span>

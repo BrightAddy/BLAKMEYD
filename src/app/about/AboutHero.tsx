@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, X, CheckCircle } from "lucide-react";
+import { motion } from "motion/react";
 
 const TYPEWRITER_PHRASES = [
   "Designed for You.",
@@ -17,7 +16,6 @@ export default function AboutHero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isConsultModalOpen, setIsConsultModalOpen] = useState(false);
 
   // Typewriter effect loop
   useEffect(() => {
@@ -118,12 +116,12 @@ export default function AboutHero() {
             </Link>
 
             {/* Quick Consultation Trigger */}
-            <button
-              onClick={() => setIsConsultModalOpen(true)}
+            <Link
+              href="/book"
               className="px-7 sm:px-8 py-4 bg-[#B98A2E] hover:bg-white text-[#15150F] text-[10.5px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase transition-all duration-300 shadow-xl hover:shadow-[0_4px_30px_rgba(185,138,46,0.5)] rounded-[2px]"
             >
               <span>Book a Consultation</span>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -146,99 +144,6 @@ export default function AboutHero() {
           </a>
         </div>
       </div>
-
-      {/* ── BESPOKE CONSULTATION QUICK MODAL ── */}
-      <AnimatePresence>
-        {isConsultModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6"
-            onClick={() => setIsConsultModalOpen(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 15 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 15 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full max-w-lg bg-[#181411] text-[#FBF9F4] border border-[#B98A2E]/50 p-6 sm:p-8 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsConsultModalOpen(false)}
-                className="absolute top-5 right-5 p-1.5 text-white/60 hover:text-white transition-colors"
-                aria-label="Close consultation modal"
-              >
-                <X size={18} />
-              </button>
-
-              <div className="mb-6">
-                <span className="text-[10px] uppercase tracking-[0.25em] text-[#B98A2E] font-medium">
-                  Private Client Services
-                </span>
-                <h3 className="font-fraunces text-2xl sm:text-3xl text-white mt-1">
-                  Book a Consultation
-                </h3>
-                <p className="text-xs text-white/70 mt-2 leading-relaxed">
-                  Experience dedicated bespoke craftsmanship. Select your preferred consultation format:
-                </p>
-              </div>
-
-              {/* Consultation Options */}
-              <div className="space-y-3 mb-6">
-                <Link
-                  href="/book?type=atelier"
-                  onClick={() => setIsConsultModalOpen(false)}
-                  className="group block p-4 border border-[#B98A2E]/30 hover:border-[#B98A2E] bg-white/[0.03] hover:bg-white/[0.06] transition-all"
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#FBF9F4] group-hover:text-[#B98A2E] transition-colors flex items-center gap-2">
-                        <span>In-Atelier Fitting & Consultation</span>
-                        <Sparkles size={13} className="text-[#B98A2E]" />
-                      </h4>
-                      <p className="text-xs text-white/60 mt-1">
-                        Private 60-minute session at our Accra studio. Fabric drape & anatomical measuring.
-                      </p>
-                    </div>
-                    <span className="text-[#B98A2E] opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all mt-1">
-                      &rarr;
-                    </span>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/book?type=virtual"
-                  onClick={() => setIsConsultModalOpen(false)}
-                  className="group block p-4 border border-white/10 hover:border-[#B98A2E] bg-white/[0.03] hover:bg-white/[0.06] transition-all"
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#FBF9F4] group-hover:text-[#B98A2E] transition-colors flex items-center gap-2">
-                        <span>Global Virtual Consultation</span>
-                      </h4>
-                      <p className="text-xs text-white/60 mt-1">
-                        For international clients across the diaspora. Digital sketch review & measurement guide.
-                      </p>
-                    </div>
-                    <span className="text-[#B98A2E] opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all mt-1">
-                      &rarr;
-                    </span>
-                  </div>
-                </Link>
-              </div>
-
-              {/* Atelier Note */}
-              <div className="flex items-center gap-2 text-[11px] text-white/50 border-t border-white/10 pt-4">
-                <CheckCircle size={13} className="text-[#B98A2E] shrink-0" />
-                <span>Private consultations require 48 hours advance booking.</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

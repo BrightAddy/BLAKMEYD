@@ -1,31 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist_Mono, Alex_Brush, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const alexBrush = Alex_Brush({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-alex-brush",
-  display: "swap",
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Blak Meyd | Bespoke Fashion Atelier",
@@ -48,9 +23,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${geistMono.variable} ${alexBrush.variable} ${playfairDisplay.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:opsz,wght@9..144,300..900&family=Geist+Mono:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        />
         <link
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap"

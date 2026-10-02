@@ -51,12 +51,13 @@ body[data-hide-nav="true"] header[role="banner"] {
   --color-popover-foreground: var(--popover-foreground);
 
   /* Fonts */
-  --font-fraunces:        var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-fraunces:        'Fraunces', Georgia, serif;
   --font-general-sans:    'General Sans', system-ui, sans-serif;
   --font-sans:            'General Sans', system-ui, sans-serif;
-  --font-heading:         var(--font-fraunces), 'Fraunces', Georgia, serif;
-  --font-script:          var(--font-alex-brush), 'Alex Brush', cursive, sans-serif;
-  --font-mono:            var(--font-geist-mono);
+  --font-heading:         'Fraunces', Georgia, serif;
+  --font-script:          'Alex Brush', cursive, sans-serif;
+  --font-mono:            'Geist Mono', monospace;
+  --font-playfair:        'Playfair Display', Georgia, serif;
 
   /* Border radius — editorial/sharp */
   --radius-sm:            2px;

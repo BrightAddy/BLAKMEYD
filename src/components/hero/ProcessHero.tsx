@@ -36,7 +36,7 @@ export default function ProcessHero() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover object-[center_right] sm:object-center pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
         aria-hidden="true"
       >
         <source src="/video/process.mp4" type="video/mp4" />
@@ -46,15 +46,21 @@ export default function ProcessHero() {
       {/* ═════════════════════════════════════════════════════════════════
           02: EDITORIAL CINEMATIC GRADIENT OVERLAYS
       ═════════════════════════════════════════════════════════════════ */}
-      {/* Left-to-right gradient for typography readability while keeping dress visible */}
+      {/* Mobile balanced ambient wash to keep the rotating gown as the luminous centerpiece while ensuring text legibility */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-[#04120D]/90 via-[#072018]/50 via-45% to-transparent pointer-events-none"
+        className="absolute inset-0 bg-[#04120D]/40 sm:bg-transparent pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Right side subtle darkening to balance warm atelier lighting */}
+      {/* Left-to-right gradient for typography readability on desktop/tablet while keeping dress visible */}
       <div
-        className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black/35 to-transparent pointer-events-none"
+        className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#04120D]/90 via-[#072018]/50 via-45% to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Right side subtle darkening to balance warm atelier lighting on desktop */}
+      <div
+        className="hidden sm:block absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black/35 to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
@@ -105,7 +111,7 @@ export default function ProcessHero() {
                 delay: 0.35,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] font-light text-[#FBF9F4] tracking-tight leading-[1.05]"
+              className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] font-light text-[#FBF9F4] tracking-tight leading-[1.05] drop-shadow-md"
             >
               <span className="block font-normal">From Vision</span>
               <span className="block italic font-light text-[#FBF9F4]/90">
@@ -123,7 +129,7 @@ export default function ProcessHero() {
               delay: 0.65,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="font-sans text-sm sm:text-base lg:text-lg text-[#FBF9F4]/80 font-light leading-relaxed max-w-lg mb-10"
+            className="font-sans text-sm sm:text-base lg:text-lg text-[#FBF9F4]/90 font-light leading-relaxed max-w-lg mb-10 drop-shadow-sm"
           >
             Every piece begins with an idea and moves through a considered
             process of design, craftsmanship, fittings and finishing.

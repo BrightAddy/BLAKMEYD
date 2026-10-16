@@ -120,9 +120,9 @@ export default function AboutInspiration() {
               className="pt-8 sm:pt-10 lg:pt-12"
             >
               <a
-                href="#manifesto"
+                href="#philosophy"
                 className="group inline-flex items-center gap-3 text-[9.5px] tracking-[0.24em] uppercase text-[#A8A095] hover:text-[#FBF9F4] font-mono transition-colors"
-                aria-label="Scroll to explore our atelier manifesto"
+                aria-label="Scroll to explore our philosophy"
               >
                 {/* Vertical Gold Bar */}
                 <span className="h-5 w-[1.5px] bg-[#C5A265]/70 group-hover:bg-[#C5A265] transition-colors" />

@@ -401,7 +401,7 @@ export default function CollectionsHero() {
                 className="pt-2 sm:pt-4"
               >
                 <Link
-                  href="/lookbook"
+                  href="#collection-categories"
                   className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium tracking-[0.22em] uppercase text-[#FBF9F4] hover:text-[#B98A2E] transition-colors py-2"
                 >
                   <span className="relative">

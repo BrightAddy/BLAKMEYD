@@ -10,9 +10,6 @@ interface HeroSlide {
   number: string;
   image: string;
   alt: string;
-  titleLine1: string;
-  titleLine2: string;
-  subtitle: string;
   quote: string;
   panInitial: { x: string; y: string };
   panAnimate: { x: string; y: string };
@@ -20,39 +17,30 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    id: "atelier-kente",
+    id: "bridal-mermaid-cathedral",
     number: "01",
-    image: "/images/hero/atelier-hero-bg.jpg",
-    alt: "Blak Meyd Haute Couture Atelier with signature emerald green and gold Ghanaian Kente gown",
-    titleLine1: "WEAR",
-    titleLine2: "YOUR STORY",
-    subtitle: "BESPOKE COUTURE  •  TIMELESS ELEGANCE  •  UNIQUELY YOU",
+    image: "/images/blackmeyd/photo_41_2026-10-12_10-55-20.jpg",
+    alt: "Blak Meyd bespoke bridal gown with hand-beaded crystal mermaid silhouette and bridesmaids in crimson gowns",
     quote: "Custom Garments for Life's Most Meaningful Moments.",
-    panInitial: { x: "-2.5%", y: "0%" },
+    panInitial: { x: "-2%", y: "0%" },
     panAnimate: { x: "1.5%", y: "0%" },
   },
   {
-    id: "ivory-pedestal",
+    id: "gold-couture-bridal-suite",
     number: "02",
-    image: "/images/hero/ivory-couture.jpg",
-    alt: "Hand-sculpted ivory and gold bridal gown in the historical stone fitting gallery",
-    titleLine1: "SACRED",
-    titleLine2: "CRAFTSMANSHIP",
-    subtitle: "HEIRLOOM SILKS  •  CORSETRY MASTERY  •  MADE IN ACCRA",
+    image: "/images/blackmeyd/photo_1_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd bespoke ochre and gold couture gown with bridal party in champagne silk robes",
     quote: "Every stitch anchored by hand for generations to treasure.",
-    panInitial: { x: "0%", y: "2%" },
+    panInitial: { x: "0%", y: "1.5%" },
     panAnimate: { x: "0%", y: "-1.5%" },
   },
   {
-    id: "emerald-gallery",
+    id: "traditional-celebration-heritage",
     number: "03",
-    image: "/images/hero/emerald-gallery.jpg",
-    alt: "Architectural emerald couture cape gown exhibited on glass pedestal in high-rise gallery",
-    titleLine1: "ROYAL",
-    titleLine2: "DISTINCTION",
-    subtitle: "GHANAIAN HERITAGE  •  AVANT-GARDE FORM  •  GLOBAL LUXURY",
+    image: "/images/blackmeyd/photo_2_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd bespoke Ghanaian celebration wear with bridesmaids in magenta and burgundy lace",
     quote: "Redefining African luxury couture on the world stage.",
-    panInitial: { x: "2%", y: "-1.5%" },
+    panInitial: { x: "1.5%", y: "-1%" },
     panAnimate: { x: "-1.5%", y: "1%" },
   },
 ];
@@ -63,6 +51,7 @@ const KEN_BURNS_DURATION = 4.8;
 export default function AtelierHero() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [typedLine2, setTypedLine2] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const activeSlide = HERO_SLIDES[currentSlideIndex];
 
@@ -75,29 +64,35 @@ export default function AtelierHero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Living animated typewriter effect for headline Line 2
+  // Living animated typewriter effect that continuously types and loops 'YOUR STORY'
   useEffect(() => {
-    const target = activeSlide.titleLine2;
-    let charIndex = 0;
-    let typeInterval: NodeJS.Timeout;
+    const target = "YOUR STORY";
+    let timeout: NodeJS.Timeout;
 
-    // Slight delay so Line 1 sweeps in first
-    const startTimeout = setTimeout(() => {
-      setTypedLine2("");
-      typeInterval = setInterval(() => {
-        charIndex++;
-        setTypedLine2(target.slice(0, charIndex));
-        if (charIndex >= target.length) {
-          clearInterval(typeInterval);
-        }
-      }, 65);
-    }, 280);
+    if (!isDeleting && typedLine2 === target) {
+      // Hold the completed text for 3 seconds so the visitor can read and appreciate it
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 3000);
+    } else if (isDeleting && typedLine2 === "") {
+      // Brief pause when erased before typing begins again
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+      }, 500);
+    } else {
+      // Typing speed: 85ms per character, Deleting speed: 45ms per character
+      const speed = isDeleting ? 45 : 85;
+      timeout = setTimeout(() => {
+        setTypedLine2((prev) =>
+          isDeleting
+            ? target.slice(0, Math.max(0, prev.length - 1))
+            : target.slice(0, prev.length + 1)
+        );
+      }, speed);
+    }
 
-    return () => {
-      clearTimeout(startTimeout);
-      if (typeInterval) clearInterval(typeInterval);
-    };
-  }, [currentSlideIndex, activeSlide.titleLine2]);
+    return () => clearTimeout(timeout);
+  }, [typedLine2, isDeleting]);
 
   return (
     <section
@@ -143,10 +138,10 @@ export default function AtelierHero() {
       {/* ── CINEMATIC OVERLAYS & GRADIENTS (Matches mockup lighting & contrast) ── */}
       {/* Dark left gradient to ensure text readability */}
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#120E0B]/85 via-[#120E0B]/40 to-transparent w-full md:w-[65%]" />
-      
+
       {/* Top gradient for navbar blending */}
       <div className="absolute top-0 left-0 right-0 h-36 z-10 bg-gradient-to-b from-[#120E0B]/70 via-[#120E0B]/25 to-transparent pointer-events-none" />
-      
+
       {/* Bottom gradient for carousel controls and quote */}
       <div className="absolute bottom-0 left-0 right-0 h-44 z-10 bg-gradient-to-t from-[#120E0B]/75 via-[#120E0B]/30 to-transparent pointer-events-none" />
 
@@ -160,29 +155,26 @@ export default function AtelierHero() {
 
         {/* ── MAIN HERO TYPOGRAPHY & CALLS TO ACTION (Left Aligned) ── */}
         <div className="max-w-3xl my-auto">
-          <AnimatePresence mode="wait">
+          <div>
             <motion.div
-              key={activeSlide.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.8 }}
             >
               {/* Massive Editorial Headline with Living Animated Reveal */}
               <h1 className="font-fraunces text-5xl sm:text-7xl lg:text-[5.75rem] font-normal leading-[0.92] tracking-[-0.02em] text-[#FFFFFF] drop-shadow-[0_4px_30px_rgba(0,0,0,0.65)]">
                 {/* Line 1: Elegant Masked Slide-Up */}
                 <span className="block overflow-hidden py-1">
                   <motion.span
-                    key={`l1-${activeSlide.id}`}
                     initial={{ y: "115%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
                     transition={{
-                      duration: 0.75,
+                      duration: 0.85,
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     className="block"
                   >
-                    {activeSlide.titleLine1}
+                    WEAR
                   </motion.span>
                 </span>
 
@@ -200,16 +192,15 @@ export default function AtelierHero() {
 
               {/* Sub-tagline with Animated Expanding Letter Tracking */}
               <motion.p
-                key={`sub-${activeSlide.id}`}
                 initial={{ opacity: 0, y: 12, letterSpacing: "0.16em" }}
                 animate={{ opacity: 1, y: 0, letterSpacing: "0.24em" }}
                 transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-5 sm:mt-6 text-[11px] sm:text-xs font-medium text-[#EBE5D8] uppercase drop-shadow-md"
               >
-                {activeSlide.subtitle}
+                BESPOKE COUTURE  •  TIMELESS ELEGANCE  •  UNIQUELY YOU
               </motion.p>
             </motion.div>
-          </AnimatePresence>
+          </div>
 
           {/* Action Buttons Row */}
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">

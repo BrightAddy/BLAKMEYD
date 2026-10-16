@@ -8,13 +8,12 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// 7 Public Pages per BLAK MEYD Website Implementation Architecture
+// Public Pages per BLAK MEYD Website Architecture
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Collections", href: "/collections" },
   { label: "Process", href: "/process" },
-  { label: "Lookbook", href: "/lookbook" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -55,10 +54,9 @@ export default function Navbar() {
   });
 
   const isContact = pathname === "/contact" || pathname?.startsWith("/contact");
-  const isLookbook = pathname === "/lookbook" || pathname?.startsWith("/lookbook");
   const isOrder = pathname === "/order" || pathname?.startsWith("/order");
   const isBook = pathname === "/book" || pathname?.startsWith("/book") || pathname?.startsWith("/consultation");
-  const isDarkText = isContact || isLookbook || isOrder || isBook;
+  const isDarkText = isContact || isOrder || isBook;
   const isLightNav = isDarkText;
 
   return (
@@ -73,10 +71,6 @@ export default function Navbar() {
             ? isScrolled
               ? "bg-[#FBF9F4]/98 backdrop-blur-md border-b border-[#DDD5C5]/80 py-3 sm:py-3.5 shadow-sm"
               : "bg-[#FBF9F4]/92 backdrop-blur-sm border-b border-[#DDD5C5]/60 py-3.5 sm:py-4 lg:py-5"
-            : isLookbook
-            ? isScrolled
-              ? "bg-[#FBF9F4]/98 backdrop-blur-md border-b border-[#DDD5C5]/80 py-3 sm:py-3.5 shadow-sm"
-              : "bg-transparent border-b border-transparent py-4 sm:py-5 lg:py-6"
             : isScrolled
             ? "bg-[#14100D]/95 backdrop-blur-xl border-b border-[#B98A2E]/30 shadow-[0_8px_30px_rgba(0,0,0,0.4)] py-3 sm:py-3.5"
             : "bg-transparent border-b border-transparent py-4 sm:py-5 lg:py-6"
@@ -189,9 +183,7 @@ export default function Navbar() {
               href="/book"
               className={cn(
                 "relative inline-flex items-center justify-center px-4.5 xl:px-6 py-2 xl:py-2.5 rounded-[2px] border border-[#B98A2E] text-[10px] xl:text-[11px] font-medium tracking-[0.16em] xl:tracking-[0.18em] uppercase transition-all duration-300 shadow-sm whitespace-nowrap",
-                isLookbook
-                  ? "bg-[#B98A2E] text-[#15150F] font-semibold hover:bg-[#0E3B2E] hover:text-[#FBF9F4] hover:border-[#0E3B2E] shadow-[0_2px_12px_rgba(185,138,46,0.3)] active:scale-[0.98]"
-                  : isDarkText
+                isDarkText
                   ? "text-[#15150F] hover:bg-[#B98A2E] hover:text-[#FBF9F4] active:scale-[0.98]"
                   : "text-[#FFFFFF] hover:bg-[#B98A2E] hover:text-[#15150F] hover:shadow-[0_4px_20px_rgba(185,138,46,0.3)] active:scale-[0.98]"
               )}
@@ -206,9 +198,7 @@ export default function Navbar() {
               href="/book"
               className={cn(
                 "px-3 py-1.5 border border-[#B98A2E] text-[10px] uppercase tracking-[0.16em] font-medium transition-colors rounded-[2px]",
-                isLookbook
-                  ? "bg-[#B98A2E] text-[#15150F] font-semibold hover:bg-[#0E3B2E] hover:text-[#FBF9F4] hover:border-[#0E3B2E]"
-                  : isDarkText
+                isDarkText
                   ? "text-[#15150F] hover:bg-[#B98A2E] hover:text-[#FBF9F4]"
                   : "text-white hover:bg-[#B98A2E] hover:text-black"
               )}

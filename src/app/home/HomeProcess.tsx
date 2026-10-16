@@ -67,13 +67,13 @@ export default function HomeProcess() {
             className="lg:col-span-5 xl:col-span-5"
           >
             <div className="relative w-full h-[440px] sm:h-[500px] lg:h-[560px] xl:h-[580px] max-h-[600px] overflow-hidden shadow-[0_12px_36px_rgba(0,0,0,0.12)] group bg-[#201D19]">
-              {/* Designer Portrait Image */}
+              {/* Designer / Atelier Showcase Image */}
               <Image
-                src="/images/process-designer-hd.jpg"
-                alt="Blak Meyd Ghanaian haute couture designer hand-sketching bespoke gown at atelier cutting table"
+                src="/images/blackmeyd/photo_40_2026-10-12_10-55-20.jpg"
+                alt="Bride admiring her bespoke hand-beaded Blak Meyd bridal gown on an atelier mannequin before final fitting"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover object-[center_top] sm:object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 priority
               />
 

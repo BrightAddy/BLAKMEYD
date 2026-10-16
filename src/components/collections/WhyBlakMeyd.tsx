@@ -110,8 +110,8 @@ const PRINCIPLES: Principle[] = [
 
 const COLLAGE_IMAGES = {
   primary: {
-    src: "/images/why-blak-meyd/primary-couture.jpg",
-    alt: "Blak Meyd Bespoke Couture Gown — Emerald Green & Gold Handcrafted Silhouette",
+    src: "/images/blackmeyd/photo_19_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd Bespoke Couture Silhouette — Full-Length Emerald Green & Gold Hand-Embellished Gown",
   },
   details: [
     {
@@ -333,12 +333,12 @@ export default function WhyBlakMeyd() {
               variants={itemVariants}
               className="mt-8 sm:mt-10 flex flex-wrap items-center justify-between gap-4 pt-4"
             >
-              {/* Explore Lookbook Button */}
+              {/* Explore Collections Button */}
               <Link
-                href="/lookbook"
+                href="/collections"
                 className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 border border-[#15150F]/30 hover:border-[#B98A2E] bg-transparent text-xs tracking-[0.22em] uppercase font-sans font-medium text-[#15150F] hover:text-[#B98A2E] transition-all duration-300 shadow-sm"
               >
-                <span>EXPLORE THE LOOKBOOK</span>
+                <span>EXPLORE COLLECTIONS</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1 text-[#B98A2E]">
                   →
                 </span>

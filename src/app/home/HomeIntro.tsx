@@ -162,8 +162,8 @@ export default function HomeIntro() {
               className="flex flex-col"
             >
               <h2 className="font-fraunces text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-bold text-[#15150F] leading-[1.04] tracking-tight">
-                <span className="block">Bespoke</span>
-                <span className="block mt-0.5">Couture for</span>
+                <span className="block">Custom</span>
+                <span className="block mt-0.5">Designs for</span>
                 <span className="block mt-1 italic font-bold text-[#B98A2E]">
                   Modern Women
                 </span>
@@ -179,28 +179,23 @@ export default function HomeIntro() {
               className="pt-0.5"
             >
               <p className="font-fraunces italic font-medium text-lg sm:text-xl lg:text-[22px] text-[#0E3B2E] tracking-tight leading-snug">
-                Sculpting Heirloom Identities Through Ghanaian Haute Couture.
+                Handcrafted in Accra. Made uniquely for you.
               </p>
             </motion.div>
 
-            {/* 4. Storytelling Paragraphs Introducing Blak Meyd */}
+            {/* 4. Storytelling Paragraphs Introducing Blak Meyd (Simplified & Direct) */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7, delay: 0.3, ease: LUXURY_EASE }}
-              className="space-y-3.5 text-[#4F4A42] text-[13.5px] sm:text-[14.5px] lg:text-[15px] font-normal leading-[1.8] max-w-xl"
+              className="space-y-3 text-[#4F4A42] text-[14px] sm:text-[15px] font-normal leading-[1.75] max-w-xl"
             >
               <p>
-                Founded in the vibrant heart of Accra, <strong className="font-semibold text-[#15150F]">Blak Meyd</strong> is
-                a premier Ghanaian bespoke couture atelier sculpting heirloom eveningwear, bridal reception silhouettes,
-                and architectural ceremonial garments. We design with deep intention, for women who honor craftsmanship,
-                ancestral authenticity, and distinct personal style.
+                At <strong className="font-semibold text-[#15150F]">Blak Meyd</strong>, we create custom gowns, bridal wear, and evening pieces crafted to fit you perfectly. Every design blends Ghanaian heritage with contemporary elegance, celebrating your individual style.
               </p>
               <p className="text-[#4F4A42]/90">
-                Every commission begins with an intimate creative dialogue, hand-drafted custom patterns sculpted to
-                your exact measurements, and centuries-old Ghanaian textile lineages harmonized with modern corsetry.
-                At Blak Meyd, we do not follow fleeting trends; we create timeless statements of self-expression.
+                From initial sketch to final stitch, each piece is made with intention—giving you timeless fashion that feels effortlessly yours.
               </p>
             </motion.div>
 
@@ -208,8 +203,8 @@ export default function HomeIntro() {
             <div className="pt-2 flex items-start gap-2 sm:gap-4 max-w-lg">
               <ValueMarker
                 icon={<IconMannequin />}
-                primary="BESPOKE"
-                secondary="DESIGN"
+                primary="CUSTOM"
+                secondary="FIT"
                 delay={0.4}
               />
               <span className="w-px h-11 bg-[#B98A2E]/25 mt-2 shrink-0" aria-hidden="true" />
@@ -276,13 +271,13 @@ export default function HomeIntro() {
               className="relative w-full max-w-[360px] sm:max-w-[400px] lg:max-w-[440px] xl:max-w-[460px] aspect-[4/5] rounded-t-[3.5rem] lg:rounded-t-[4.5rem] rounded-b-2xl overflow-hidden shadow-[0_20px_50px_rgba(21,21,15,0.12)] border border-[#B98A2E]/30 bg-[#0E1511]"
             >
               <Image
-                src="/images/intro-couture-campaign.jpg"
-                alt="High-fashion couture campaign for Blak Meyd atelier in Accra featuring Ghanaian model in emerald and gold gown"
+                src="/images/blackmeyd/photo_4_2026-10-12_10-55-19.jpg"
+                alt="Blak Meyd bespoke haute couture emerald green and gold sequined gown with beaded shoulder epaulets"
                 fill
                 priority
                 quality={95}
                 sizes="(min-width: 1024px) 440px, (min-width: 640px) 400px, 340px"
-                className="object-cover object-[52%_15%]"
+                className="object-cover object-[center_top]"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 pointer-events-none" />

@@ -3,9 +3,8 @@ import AboutStory from "./AboutStory";
 import AboutInspiration from "./AboutInspiration";
 import AboutPhilosophy from "./AboutPhilosophy";
 import AboutProcess from "./AboutProcess";
-import AboutCraftsmanship from "./AboutCraftsmanship";
 import AboutPolicies from "./AboutPolicies";
-import AtelierIntro from "./AtelierIntro";
+import AboutCTA from "./AboutCTA";
 import Footer from "@/components/layout/Footer";
 
 export const metadata = {
@@ -40,22 +39,15 @@ export default function AboutPage() {
         <AboutProcess />
       </div>
 
-      {/* ── 06: OUR CRAFTSMANSHIP (DETAILS MAKE THE DIFFERENCE.) ── */}
-      <div id="craftsmanship">
-        <AboutCraftsmanship />
-      </div>
-
-      {/* ── 07: POLICIES & CLIENT INFORMATION (THE DETAILS MATTER.) ── */}
+      {/* ── 06: POLICIES & CLIENT INFORMATION (THE DETAILS MATTER.) ── */}
       <div id="policies">
         <AboutPolicies />
       </div>
 
-      {/* ── 08: ATELIER LINEAGE & MANIFESTO ── */}
-      <div id="manifesto">
-        <AtelierIntro />
-      </div>
+      {/* ── 07: BESPOKE CONSULTATION & CONTACT CTA ── */}
+      <AboutCTA />
 
-      {/* ── 09: ATELIER FOOTER ── */}
+      {/* ── 08: ATELIER FOOTER ── */}
       <Footer />
     </main>
   );

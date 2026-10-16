@@ -84,7 +84,6 @@ function WhatsAppIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 const EXPLORE_LINKS = [
   { label: "Home", href: "/" },
   { label: "Collections", href: "/collections" },
-  { label: "Lookbook", href: "/lookbook" },
   { label: "Our Process", href: "/process" },
   { label: "Book a Consultation", href: "/book" },
   { label: "Contact", href: "/contact" },
@@ -93,8 +92,8 @@ const EXPLORE_LINKS = [
 const ABOUT_LINKS = [
   { label: "Our Story", href: "/about" },
   { label: "Mission & Vision", href: "/about#philosophy" },
-  { label: "The Atelier", href: "/about#craftsmanship" },
-  { label: "Bespoke Approach", href: "/about#approach" },
+  { label: "The Atelier", href: "/about#heritage" },
+  { label: "Bespoke Approach", href: "/about#process" },
   { label: "Policies", href: "/about#policies" },
 ];
 

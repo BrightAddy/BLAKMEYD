@@ -1,11 +1,8 @@
 import AtelierHero from "./home/AtelierHero";
 import HomeIntro from "./home/HomeIntro";
 import FeaturedCollections from "./home/FeaturedCollections";
-import HomeExperience from "./home/HomeExperience";
 import HomeProcess from "./home/HomeProcess";
-import BridalSpecialOccasions from "./home/BridalSpecialOccasions";
-import HomeSignatureCollections from "./home/HomeSignatureCollections";
-import WhyBlakMeyd from "./home/WhyBlakMeyd";
+import WhyBlakMeyd from "@/components/collections/WhyBlakMeyd";
 import Testimonials from "./home/Testimonials";
 import ConsultationCTA from "./home/ConsultationCTA";
 import Footer from "@/components/layout/Footer";
@@ -28,28 +25,19 @@ export default function Home() {
       {/* ── 03: FEATURED COLLECTIONS ── */}
       <FeaturedCollections />
 
-      {/* ── 04: THE BLAK MEYD EXPERIENCE ── */}
-      <HomeExperience />
-
-      {/* ── 05: OUR PROCESS ── */}
+      {/* ── 04: OUR PROCESS ── */}
       <HomeProcess />
 
-      {/* ── 06: BRIDAL & SPECIAL OCCASIONS ── */}
-      <BridalSpecialOccasions />
-
-      {/* ── 07: SIGNATURE COLLECTIONS ── */}
-      <HomeSignatureCollections />
-
-      {/* ── 08: WHY BLAK MEYD ── */}
+      {/* ── 05: WHY BLAK MEYD (From Collections) ── */}
       <WhyBlakMeyd />
 
-      {/* ── 09: CLIENT STORIES ── */}
+      {/* ── 06: CLIENT STORIES ── */}
       <Testimonials />
 
-      {/* ── 10: BOOK A CONSULTATION (FINAL CTA) ── */}
+      {/* ── 07: BOOK A CONSULTATION (FINAL CTA) ── */}
       <ConsultationCTA />
 
-      {/* ── 11: FOOTER ── */}
+      {/* ── 08: FOOTER ── */}
       <Footer />
     </div>
   );

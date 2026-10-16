@@ -101,11 +101,11 @@ export default function ConsultationCTA() {
             className="lg:col-span-5 xl:col-span-5 relative w-full max-w-[460px] lg:max-w-none h-[280px] sm:h-[340px] lg:h-[390px] xl:h-[420px] rounded-xs overflow-hidden bg-[#EAE3D6] shadow-lg group mx-auto lg:mx-0"
           >
             <Image
-              src="/images/cta-atelier-still-life-hd.jpg"
-              alt="Blak Meyd bespoke haute couture atelier stationery still life with letterpress card, gold pen, and draped emerald velvet"
+              src="/images/blackmeyd/photo_44_2026-10-12_10-55-20.jpg"
+              alt="Blak Meyd bespoke haute couture atelier gown on dressmaker mannequin featuring hand-beaded crystal bodice and rose shoulder corsage"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
+              className="object-cover object-[center_top] transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
               priority
             />
 

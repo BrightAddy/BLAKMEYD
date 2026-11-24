@@ -352,12 +352,12 @@ export default function OrderMultiStepForm({ onExit }: OrderMultiStepFormProps =
       ═════════════════════════════════════════════════════════════════════ */}
       <div className="relative w-full lg:w-[42%] lg:min-h-screen lg:sticky lg:top-0 h-48 sm:h-64 lg:h-screen bg-[#F5F2EB] overflow-hidden shrink-0 border-b lg:border-b-0 lg:border-r border-[#DDD5C5]/70">
         <Image
-          src="/images/order/order-hero-atelier.jpg"
-          alt="Blak Meyd couture fashion atelier with emerald velvet gown on mannequin, marble worktable, and fashion sketches"
+          src="/images/blackmeyd/photo_5_2026-10-12_10-55-19.jpg"
+          alt="Blak Meyd bespoke haute couture emerald green and gold sequin gown"
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 42vw"
-          className="object-cover object-[55%_center] select-none"
+          className="object-cover object-top select-none"
         />
 
         {/* Ambient Dark Gradient Vignette for Atelier Brand Seal */}

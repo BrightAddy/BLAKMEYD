@@ -41,8 +41,8 @@ export default function AboutStory() {
         {/* ── DESKTOP PHOTOGRAPH (RIGHT SIDE — PROPORTIONATE & REFINED SCALE) ── */}
         <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%] xl:w-[46%] z-0 overflow-hidden">
           <Image
-            src="/images/about/about-story-atelier.jpg"
-            alt="Blak Meyd couture designer in emerald gown at atelier marble cutting table in Accra"
+            src="/images/blackmeyd/photo_5_2026-10-12_10-55-19.jpg"
+            alt="Blak Meyd bespoke emerald green and gold couture gown crafted in Accra atelier"
             fill
             priority
             quality={95}
@@ -174,12 +174,12 @@ export default function AboutStory() {
             {/* ── MOBILE / TABLET DEDICATED IMAGE (CLEAN, PROPORTIONATE & NOT HUGE) ── */}
             <div className="lg:hidden mt-8 relative w-full aspect-[16/10] sm:aspect-[2/1] max-h-[280px] rounded-xl overflow-hidden border border-[#B98A2E]/25 shadow-md">
               <Image
-                src="/images/about/about-story-atelier.jpg"
-                alt="Blak Meyd couture designer at atelier marble cutting table in Accra"
+                src="/images/blackmeyd/photo_5_2026-10-12_10-55-19.jpg"
+                alt="Blak Meyd bespoke emerald green and gold couture gown crafted in Accra atelier"
                 fill
                 quality={95}
                 sizes="100vw"
-                className="object-cover object-center"
+                className="object-cover object-[center_20%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
             </div>

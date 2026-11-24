@@ -86,8 +86,8 @@ const STEPS: Step[] = [
 ];
 
 const CTA_IMAGE = {
-  src: "/images/cta/consultation-couture.jpg",
-  alt: "Blak Meyd Bespoke Couture Consultation — Emerald Gown in Accra Atelier",
+  src: "/images/blackmeyd/photo_21_2026-10-12_10-55-19.jpg",
+  alt: "Blak Meyd Bespoke Couture Consultation — Heirloom Pearl Corset Gown in Accra",
 };
 
 export default function ConsultationCTA() {

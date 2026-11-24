@@ -115,16 +115,16 @@ const COLLAGE_IMAGES = {
   },
   details: [
     {
-      src: "/images/why-blak-meyd/detail-mannequin.jpg",
-      alt: "Tailoring Mannequin with Gold Measuring Tape in Blak Meyd Atelier",
+      src: "/images/blackmeyd/photo_48_2026-10-12_10-55-20.jpg",
+      alt: "Tailoring Mannequin with Beaded Corsetry in Blak Meyd Atelier",
     },
     {
-      src: "/images/why-blak-meyd/detail-embroidery.jpg",
-      alt: "Artisan Hand-Beading and Gold Thread Embroidery Detail",
+      src: "/images/blackmeyd/photo_20_2026-10-12_10-55-19.jpg",
+      alt: "Artisan Silk Threads and Precision Hand-Tailoring Materials",
     },
     {
-      src: "/images/why-blak-meyd/detail-atelier-label.jpg",
-      alt: "Blak Meyd Bespoke Couture Embossed Leather Label and Tailor Shears",
+      src: "/images/blackmeyd/photo_54_2026-10-12_10-55-20.jpg",
+      alt: "Blak Meyd Bespoke Couture Atelier Certification and Branded Label",
     },
   ],
 };

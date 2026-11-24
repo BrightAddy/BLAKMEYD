@@ -23,8 +23,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["OUR", "HERITAGE", "IN EVERY", "STITCH"],
     description:
       "Our Kente Gown collection reimagines traditional Ghanaian textiles with modern silhouettes. Each piece is crafted to honour our culture while giving you a sophisticated, elegant look for life's most important moments.",
-    image: "/images/collections/category-01-kente-gown.jpg",
-    alt: "Blak Meyd Bespoke Kente Gown modeled in sunlit architectural atelier courtyard",
+    image: "/images/blackmeyd/photo_24_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd Bespoke Handwoven Beaded Kente Gown with Sculpted Corset",
   },
   {
     number: "02",
@@ -34,8 +34,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["CELEBRATING", "IN UNRIVALED", "LUXURY", "—"],
     description:
       "Tailored for the transition into evening celebrations. Combining midnight silks, structured corsetry, and hand-beaded metallic embroidery designed to radiate beneath celebratory lights.",
-    image: "/images/collections/category-02-reception-outfit.jpg",
-    alt: "Blak Meyd Bespoke Reception Outfit modeled in sunlit limestone architectural courtyard",
+    image: "/images/blackmeyd/photo_12_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd Bespoke Reception Outfit in Radiating Golden Ruffled Silk",
   },
   {
     number: "03",
@@ -45,8 +45,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["FOR A", "LOVE STORY", "THAT LASTS", "—"],
     description:
       "Our Bridal Robe collection is designed for the modern bride who appreciates timeless elegance. From intricate lace to bespoke detailing, each gown is crafted with precision, romance and an unmatched attention to detail.",
-    image: "/images/collections/category-03-bridal-robe.jpg",
-    alt: "Blak Meyd Bespoke Bridal Robe with heirloom Chantilly lace and cathedral veil",
+    image: "/images/blackmeyd/photo_45_2026-10-12_10-55-20.jpg",
+    alt: "Blak Meyd Bespoke Bridal Robe in White Satin with Feather Sleeves and Bridesmaid Robes",
   },
   {
     number: "04",
@@ -56,8 +56,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["BEAUTY IN", "SHARED", "MOMENTS", "—"],
     description:
       "Harmonious bridal party creations sculpted to honor each bridesmaid's unique silhouette while preserving a unified, sophisticated aesthetic for your wedding journey.",
-    image: "/images/collection-bridal-reception.jpg",
-    alt: "Blak Meyd Bespoke Bridesmaid Outfits in harmonious atelier tones",
+    image: "/images/blackmeyd/photo_41_2026-10-12_10-55-20.jpg",
+    alt: "Blak Meyd Bespoke Bridesmaid Outfits in Harmonious Crimson and Gold Silk",
   },
   {
     number: "05",
@@ -67,8 +67,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["HONORING", "THE SPECIAL", "OCCASION", "—"],
     description:
       "Sophisticated silhouettes for distinguished wedding attendees. Balancing quiet luxury, artisanal accents, and respectful elegance tailored to the ceremony's tone.",
-    image: "/images/collection-milestone-outfit.jpg",
-    alt: "Blak Meyd Bespoke Wedding Guest Attire crafted with couture precision",
+    image: "/images/blackmeyd/photo_1_2026-10-12_10-52-11.jpg",
+    alt: "Blak Meyd Bespoke Wedding Guest Attire in Magenta and Burgundy Lace",
   },
   {
     number: "06",
@@ -78,8 +78,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["FRAMED", "FOR", "ETERNITY", "—"],
     description:
       "Statement couture pieces designed specifically for editorial portraiture, maternity milestones, and legacy photography. Sculpted with bold volume and dynamic lines.",
-    image: "/images/hero-couture.jpg",
-    alt: "Blak Meyd Avant-Garde Photoshoot Couture Garment in atelier gallery",
+    image: "/images/blackmeyd/photo_31_2026-10-12_10-55-20.jpg",
+    alt: "Blak Meyd Avant-Garde Editorial Photoshoot Dress in Black Flared Satin",
   },
   {
     number: "07",
@@ -89,8 +89,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["COMMENCING", "WITH", "DISTINCTION", "—"],
     description:
       "Regal commencement attire fusing bespoke tailoring with subtle African heritage motifs, commemorating monumental academic achievement and professional ascension.",
-    image: "/images/craftsmanship.jpg",
-    alt: "Blak Meyd Bespoke Graduation Outfit celebrating academic excellence",
+    image: "/images/blackmeyd/photo_66_2026-10-12_10-55-20.jpg",
+    alt: "Blak Meyd Bespoke Commencement and Graduation Attire",
   },
   {
     number: "08",
@@ -100,8 +100,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["AN UNFORGETTABLE", "ENTRANCE", "TO REMEMBER", "—"],
     description:
       "Bespoke evening gowns embodying youthful sophistication and individual grace. Tailored to ensure comfort, confidence, and breathtaking presence on milestone evenings.",
-    image: "/images/hero/ivory-couture.jpg",
-    alt: "Blak Meyd Bespoke Prom Evening Gown on ivory pedestal",
+    image: "/images/blackmeyd/photo_9_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd Bespoke Prom Evening Gown in Radiating Hot Pink Tulle and Beaded Bodice",
   },
   {
     number: "09",
@@ -111,8 +111,8 @@ export const COLLECTION_CATEGORIES_DATA: CollectionCategoryItem[] = [
     sidebarText: ["YOUR VISION", "BROUGHT", "TO LIFE", "—"],
     description:
       "Custom bespoke creations for private galas, state banquets, and unique celebratory occasions. Every silhouette is drafted from a blank canvas to your exact anatomical dimensions.",
-    image: "/images/hero/emerald-gallery.jpg",
-    alt: "Blak Meyd Private Haute Couture Commission displayed in architectural space",
+    image: "/images/blackmeyd/photo_6_2026-10-12_10-55-19.jpg",
+    alt: "Blak Meyd Private Haute Couture Commissions in Emerald Green and Tailored Suit",
   },
 ];
 

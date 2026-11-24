@@ -34,14 +34,14 @@ export const CONSULTATION_PRICING: Record<ConsultationType, { fee: number; title
     title: "Non-Bridal Consultation",
     subtitle: "GHS 200",
     description: "For occasional outfits, prom, graduation, wedding guest, photoshoot and more.",
-    image: "/images/consultation/consultation-type-nonbridal.jpg",
+    image: "/images/blackmeyd/photo_30_2026-10-12_10-55-20.jpg",
   },
   "bridal": {
     fee: 800,
     title: "Bridal Consultation",
     subtitle: "GHS 800",
     description: "For wedding gowns and all bridal related outfits.",
-    image: "/images/consultation/consultation-type-bridal.jpg",
+    image: "/images/blackmeyd/photo_18_2026-10-12_10-55-19.jpg",
   },
 };
 

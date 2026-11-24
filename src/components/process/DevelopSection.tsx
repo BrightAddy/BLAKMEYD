@@ -172,8 +172,8 @@ export default function DevelopSection() {
             {/* Clean rectangular editorial presentation: no heavy shadows, no floating card */}
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10.2] overflow-hidden rounded-xs border border-[#E6E1D6]/80 bg-[#EFECE5]">
               <Image
-                src="/images/process/develop-atelier-light.jpg"
-                alt="Blak Meyd atelier preparation: bespoke pattern drafting, fabric swatches, gold tailoring shears and measuring tape"
+                src="/images/blackmeyd/photo_59_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd atelier bespoke pattern drafting, couture fashion sketch, and silhouette development"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 56vw"
@@ -376,8 +376,8 @@ export default function DevelopSection() {
         {/* Subtle ivory & hint of emerald silk fabric background */}
         <div className="absolute inset-0 opacity-40 pointer-events-none mix-blend-multiply">
           <Image
-            src="/images/process/develop-transition-light.jpg"
-            alt="Ivory couture silk texture with subtle emerald folds"
+            src="/images/blackmeyd/photo_56_2026-10-12_10-55-20.jpg"
+            alt="Blak Meyd emerald couture fabric and intricate gold bullion detailing"
             fill
             className="object-cover object-center"
             sizes="100vw"

@@ -238,8 +238,8 @@ export default function DiscoverySection() {
           >
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10] overflow-hidden rounded-xs border border-[#E6E1D6]/70 bg-[#EFECE5]">
               <Image
-                src="/images/atelier-swatches.jpg"
-                alt="Blak Meyd couture consultation, fabric swatches and bespoke drafting tools in the atelier"
+                src="/images/blackmeyd/photo_27_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd couture consultation showroom wardrobe and bespoke gowns in the atelier"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 55vw"

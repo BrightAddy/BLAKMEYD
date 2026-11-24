@@ -40,8 +40,8 @@ export default function PersonalExperienceSidebar() {
       {/* Atelier Studio Visual */}
       <div className="relative w-full aspect-[4/3] sm:aspect-[1/1] overflow-hidden bg-[#ECE8DF] border border-[#15150F]/10 shadow-sm">
         <Image
-          src="/images/consultation/consultation-sidebar-dressform.jpg"
-          alt="Bespoke dressform and tailoring studio inside the Blak Meyd atelier"
+          src="/images/blackmeyd/photo_57_2026-10-12_10-55-20.jpg"
+          alt="Bespoke dressform with official Blak Meyd atelier label"
           fill
           sizes="(max-width: 1024px) 100vw, 25vw"
           className="object-cover object-center"

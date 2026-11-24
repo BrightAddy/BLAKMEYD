@@ -15,25 +15,25 @@ const STEPS: ProcessStep[] = [
     number: "01",
     title: "UNDERSTAND",
     description: "We listen to your ideas, preferences and lifestyle to understand your vision.",
-    image: "/images/process-step-1-hd.jpg",
+    image: "/images/blackmeyd/photo_20_2026-10-12_10-55-19.jpg",
   },
   {
     number: "02",
     title: "EXPLORE",
     description: "We guide you through fabric selections, silhouettes and details that suit you.",
-    image: "/images/process-step-2-hd.jpg",
+    image: "/images/blackmeyd/photo_58_2026-10-12_10-55-20.jpg",
   },
   {
     number: "03",
     title: "REFINE",
     description: "We collaborate on design details, ensuring every element feels right.",
-    image: "/images/process-step-3-hd.jpg",
+    image: "/images/blackmeyd/photo_48_2026-10-12_10-55-20.jpg",
   },
   {
     number: "04",
     title: "CREATE",
     description: "We bring your garment to life with precision, care and craftsmanship.",
-    image: "/images/process-step-4-hd.jpg",
+    image: "/images/blackmeyd/photo_52_2026-10-12_10-55-20.jpg",
   },
 ];
 
@@ -117,13 +117,13 @@ export default function AboutProcess() {
             {/* Sculptural Gown Visual */}
             <div className="relative w-full max-w-[540px] h-[320px] sm:h-[370px] lg:h-[390px] rounded-2xl lg:rounded-tr-[4.5rem] lg:rounded-bl-2xl overflow-hidden shadow-[0_20px_50px_rgba(21,21,15,0.16)] border border-[#B98A2E]/25 group bg-[#161311]">
               <Image
-                src="/images/about/process-hero-gown.jpg"
-                alt="Blak Meyd bespoke haute couture gown in emerald velvet and champagne pleated silk draped at architectural arches with olive tree"
+                src="/images/blackmeyd/photo_21_2026-10-12_10-55-19.jpg"
+                alt="Blak Meyd bespoke haute couture bridal gown and tailored tuxedo"
                 fill
                 priority
                 quality={95}
                 sizes="(max-width: 1024px) 100vw, 540px"
-                className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-105"
+                className="object-cover object-[center_30%] transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
               {/* Inner subtle gold border glow ring */}
@@ -223,8 +223,8 @@ export default function AboutProcess() {
           >
             {/* Deep Emerald Gold-Veined Marble Background */}
             <Image
-              src="/images/about/process-emerald-marble.jpg"
-              alt="Deep emerald green marble with delicate veins of pure gold"
+              src="/images/blackmeyd/photo_56_2026-10-12_10-55-20.jpg"
+              alt="Blak Meyd emerald couture gown with gold jacquard and crystal corset craftsmanship"
               fill
               quality={95}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 240px"

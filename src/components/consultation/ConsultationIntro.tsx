@@ -53,13 +53,13 @@ export default function ConsultationIntro() {
           >
             <div className="relative w-full aspect-[16/9] max-h-[260px] sm:max-h-[290px] lg:max-h-[310px] rounded-xs overflow-hidden border border-[#15150F]/10 shadow-[0_4px_24px_rgba(0,0,0,0.06)] bg-[#ECE6DA]">
               <Image
-                src="/images/consultation/consultation-hero-clean.jpg"
-                alt="Client and master designer reviewing sketches and couture fabrics inside Blak Meyd atelier salon"
+                src="/images/blackmeyd/photo_12_2026-10-12_10-55-19.jpg"
+                alt="Bride in celebratory gold ruffled gown and entourage at Blak Meyd atelier consultation salon"
                 fill
                 priority
                 quality={95}
                 sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover object-center"
+                className="object-cover object-[center_30%]"
               />
               <div className="absolute inset-0 bg-black/[0.02] pointer-events-none" />
 

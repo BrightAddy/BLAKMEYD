@@ -147,8 +147,8 @@ export default function AboutInspiration() {
             {/* Strictly sized, elegant luxury photo card with gold contour frame */}
             <div className="relative w-full max-w-[480px] xl:max-w-[500px] h-[340px] sm:h-[400px] lg:h-[440px] xl:h-[470px] rounded-2xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.65)] border border-[#C5A265]/35 group bg-[#1A1613]">
               <Image
-                src="/images/about/about-inspiration-session.jpg"
-                alt="Blak Meyd couture designer sketching garment designs at atelier drafting table in Accra"
+                src="/images/blackmeyd/photo_47_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd hand-drafted haute couture fashion illustration and silhouette design"
                 fill
                 priority
                 quality={95}

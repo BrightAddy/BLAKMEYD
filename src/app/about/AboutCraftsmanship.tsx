@@ -52,8 +52,8 @@ export default function AboutCraftsmanship() {
           {/* ── BACKGROUND PHOTOGRAPH (MASTER ARTISAN EMBROIDERY) ── */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             <Image
-              src="/images/about/craftsmanship-embroidery.jpg"
-              alt="Blak Meyd master artisan hand embroidering intricate gold bullion embroidery onto rich emerald velvet"
+              src="/images/blackmeyd/photo_56_2026-10-12_10-55-20.jpg"
+              alt="Blak Meyd couture hand-embroidered crystal and gold detailing on emerald jacquard gown"
               fill
               priority
               quality={95}

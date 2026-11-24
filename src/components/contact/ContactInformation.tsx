@@ -180,8 +180,8 @@ export default function ContactInformation() {
           >
             <div className="relative w-full aspect-[4/5] max-w-[420px] lg:max-w-none overflow-hidden">
               <Image
-                src="/images/contact/contact-info-atelier.jpg"
-                alt="Blak Meyd haute couture atelier workspace with draped emerald velvet, fabric swatch cards, and gowns on rack"
+                src="/images/blackmeyd/photo_54_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd bespoke haute couture atelier with official certificate of recognition and draped gown"
                 fill
                 priority={false}
                 sizes="(max-width: 1024px) 90vw, 33vw"

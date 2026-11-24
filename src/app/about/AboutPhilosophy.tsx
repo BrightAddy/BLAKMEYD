@@ -47,8 +47,8 @@ export default function AboutPhilosophy() {
           >
             <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(21,21,15,0.12)] border border-[#B98A2E]/25 bg-[#161311]">
               <Image
-                src="/images/about/philosophy-muse.jpg"
-                alt="Blak Meyd muse draped in bespoke couture"
+                src="/images/blackmeyd/photo_36_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd muse in bespoke sculpted corset gown embodying individuality and modern elegance"
                 fill
                 priority
                 quality={95}

@@ -171,8 +171,8 @@ export default function CreateSection() {
             {/* Clean rectangular editorial presentation */}
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/10.2] overflow-hidden rounded-xs border border-[#E6E1D6]/80 bg-[#EFECE5]">
               <Image
-                src="/images/process/create-emerald-gown.jpg"
-                alt="Blak Meyd bespoke emerald couture garment on atelier mannequin with mirror, velvet ottoman, and atelier sketches"
+                src="/images/blackmeyd/photo_52_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd bespoke emerald green couture mermaid gown with filigree crystal beading on atelier dressform"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 56vw"
@@ -365,8 +365,8 @@ export default function CreateSection() {
         {/* Subtle ivory & hint of emerald silk fabric background */}
         <div className="absolute inset-0 opacity-45 pointer-events-none mix-blend-multiply">
           <Image
-            src="/images/process/develop-transition-light.jpg"
-            alt="Ivory couture silk texture with subtle emerald folds"
+            src="/images/blackmeyd/photo_57_2026-10-12_10-55-20.jpg"
+            alt="Blak Meyd bespoke atelier dressform with branded label and draped silk"
             fill
             className="object-cover object-center"
             sizes="100vw"

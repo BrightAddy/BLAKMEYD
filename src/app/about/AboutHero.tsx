@@ -54,13 +54,13 @@ export default function AboutHero() {
       {/* ── 01: FULL-BLEED HIGH-DEFINITION ATELIER PHOTOGRAPHY BACKGROUND ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/images/about/about-atelier-designer.jpg"
-          alt="Blak Meyd bespoke haute couture atelier salon in Accra"
+          src="/images/blackmeyd/photo_12_2026-10-12_10-55-19.jpg"
+          alt="Blak Meyd bespoke haute couture atelier bride and entourage in Accra"
           fill
           priority
           quality={100}
           sizes="100vw"
-          className="object-cover object-[center_45%]"
+          className="object-cover object-[center_35%]"
         />
       </div>
 

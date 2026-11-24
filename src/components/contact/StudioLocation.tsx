@@ -67,8 +67,8 @@ export default function StudioLocation({ config = {} }: StudioLocationProps) {
           >
             <div className="relative w-full aspect-[16/10.5] sm:aspect-[16/10] overflow-hidden">
               <Image
-                src="/images/contact/studio-location-atelier.jpg"
-                alt="Blak Meyd couture fashion atelier with emerald draped silk, design sketches, gold garment rack with bespoke gowns, and sunlit arched window"
+                src="/images/blackmeyd/photo_27_2026-10-12_10-55-20.jpg"
+                alt="Blak Meyd couture fashion atelier showroom with branded garment rack and bespoke robes"
                 fill
                 priority={false}
                 sizes="(max-width: 1024px) 100vw, 58vw"

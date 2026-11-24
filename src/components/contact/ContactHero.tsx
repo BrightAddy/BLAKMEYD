@@ -128,12 +128,12 @@ export default function ContactHero() {
           className="relative w-full h-[52vh] sm:h-[60vh] lg:h-auto min-h-[380px] lg:min-h-full overflow-hidden"
         >
           <Image
-            src="/images/contact/contact-hero-atelier.jpg"
-            alt="Blak Meyd luxury atelier with green velvet chair, marble table with draped emerald velvet, tailor measuring tape, sketchpad, and couture gowns on rack"
+            src="/images/blackmeyd/photo_6_2026-10-12_10-55-19.jpg"
+            alt="Blak Meyd atelier salon consultation with clients in emerald haute couture"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-[55%_center] lg:object-[55%_center]"
+            className="object-cover object-[center_35%]"
           />
         </motion.div>
       </div>

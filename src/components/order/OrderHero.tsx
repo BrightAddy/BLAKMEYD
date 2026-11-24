@@ -165,12 +165,12 @@ export default function OrderHero({ onStartOrder }: OrderHeroProps) {
             {/* Visual Container with subtle soft fade into ivory composition */}
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/10.5] lg:aspect-[16/10] xl:aspect-[16/9.5] overflow-hidden rounded-[1px] shadow-[0_12px_40px_rgba(21,21,15,0.06)] border border-[#DDD5C5]/60 bg-[#F5F2EB]">
               <Image
-                src="/images/order/order-hero-atelier.jpg"
-                alt="Blak Meyd bespoke couture atelier with emerald draped velvet gown on mannequin, marble worktable with tailoring tape measure and fashion sketches, and morning light through studio window"
+                src="/images/blackmeyd/photo_16_2026-10-12_10-55-19.jpg"
+                alt="Blak Meyd bespoke haute couture emerald green and gold sequin gown in atelier salon"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-[60%_center] sm:object-center select-none"
+                className="object-cover object-[center_35%] select-none"
               />
 
               {/* Gentle ambient edge vignette preserving photographic warmth */}

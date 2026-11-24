@@ -119,8 +119,8 @@ export default function AtelierIntro() {
             {/* Primary Portrait Card (7 cols on sm/lg) */}
             <div className="sm:col-span-7 relative min-h-[380px] sm:min-h-[460px] overflow-hidden bg-[#181411] border border-[#E4ECE7] shadow-lg rounded-[2px] group">
               <Image
-                src="/images/atelier-intro-portrait.jpg"
-                alt="Blak Meyd Bespoke Kente Gown photographed inside the Accra Atelier"
+                src="/images/blackmeyd/photo_16_2026-10-12_10-55-19.jpg"
+                alt="Blak Meyd Bespoke Emerald Gown photographed inside the Accra Atelier"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 32vw"
                 className="object-cover object-top transition-all duration-1000 group-hover:scale-105"
@@ -162,7 +162,7 @@ export default function AtelierIntro() {
               {/* Detail 1: Embroidery */}
               <div className="relative min-h-[180px] sm:min-h-[220px] overflow-hidden bg-[#181411] border border-[#E4ECE7] shadow-sm rounded-[2px] group">
                 <Image
-                  src="/images/craftsmanship.jpg"
+                  src="/images/blackmeyd/photo_56_2026-10-12_10-55-20.jpg"
                   alt="Artisan hands embroidering gold bullion and emerald beads"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 18vw"
@@ -183,8 +183,8 @@ export default function AtelierIntro() {
               {/* Detail 2: Swatches */}
               <div className="relative min-h-[180px] sm:min-h-[220px] overflow-hidden bg-[#181411] border border-[#E4ECE7] shadow-sm rounded-[2px] group">
                 <Image
-                  src="/images/atelier-swatches.jpg"
-                  alt="Authentic Bonwire Kente swatches and tailor tools on cutting bench"
+                  src="/images/blackmeyd/photo_20_2026-10-12_10-55-19.jpg"
+                  alt="Authentic atelier thread spools and tailor tools on cutting bench"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 18vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
